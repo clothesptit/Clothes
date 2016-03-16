@@ -12,7 +12,7 @@ import play.mvc.Controller;
  * Created by Phuong on 16/03/2016.
  */
 public class CustomerController extends Controller {
-    @Before(unless = {"registerForm", "register"})
+    @Before(unless = {"registerForm", "register", "loginForm", "login"})
     static void checkNotAuthentification() {
         if (Cache.get(session.get("username")) == null) {
             redirect("../Login-form.html");
