@@ -1,9 +1,14 @@
-# Routes
-# This file defines all application routes (Higher priority routes first)
-# ~~~~
 
-# Home page
-GET     /                                       Application.index
+# Employee
+GET     /Employee/Login-form.html                                   EmployeeController.loginForm
+POST    /Employee/Login.html                                        EmployeeController.login
+
+# Seller
+GET     /Seller/Seller.html                                         SellerController.seller
+
+# Admin
+GET     /Admin/Admin.html                                           AdminController.admin
+
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
