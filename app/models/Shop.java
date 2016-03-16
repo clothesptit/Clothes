@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "tblShop")
 public class Shop extends GenericModel implements Serializable {
-    private static final long serialVersionUID = 12L;
+    private static final long serialVersionUID = 5L;
     @Id
     public int id;
     @Column(length = 100, nullable = false)

@@ -18,9 +18,6 @@ public class Clothes extends GenericModel implements Serializable {
     public String title;
     @Column(length = 30)
     public String image;
-    @ManyToOne
-    @JoinColumn(name = "id_publisher")
-    public Publisher publisher;
     @Column(length = 30)
     public String type;
     @Column(length = 30)
@@ -41,4 +38,7 @@ public class Clothes extends GenericModel implements Serializable {
     public String color;
     @Column(length = 255)
     public String description;
+    @ManyToOne
+    @JoinColumn(name = "id_publisher")
+    public Publisher publisher;
 }

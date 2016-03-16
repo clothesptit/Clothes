@@ -345,5 +345,4 @@ UNLOCK TABLES;
 
 -- Dump completed on 2016-03-16 11:20:49
 
-CREATE USER clothes@localhost identified by '1234';
-GRANT ALL ON clothes.* to clothes@localhost;
+GRANT ALL ON clothes.* TO clothes@localhost IDENTIFIED BY '1234';
