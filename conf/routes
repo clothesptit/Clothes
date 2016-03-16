@@ -1,3 +1,9 @@
+# Clothes
+GET     /Clothes/Homepage.html                                      ClothesController.homepage
+
+# Customer
+GET     /Customer/Register-form.html                                CustomerController.registerForm
+GET     /Customer/View-info.html                                    CustomerController.viewInfo
 
 # Employee
 GET     /Employee/Login-form.html                                   EmployeeController.loginForm
