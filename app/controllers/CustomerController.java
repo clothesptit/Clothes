@@ -19,6 +19,7 @@ public class CustomerController extends Controller {
         }
     }
 
+    @Before(only = {"loginForm", "login"})
     static void checkAuthentification() {
         Customer customer = (Customer) Cache.get(session.get("username"));
         if (customer != null) {
@@ -26,8 +27,35 @@ public class CustomerController extends Controller {
         }
     }
 
+    public static void loginForm() {
+        if (session.get("noti") != null) {
+            renderArgs.put("noti", session.get("noti"));
+            session.remove("noti");
+        }
+        render("customer/login.form.html");
+    }
+
+    public static void login(String username, String pwd) {
+        try {
+            Customer customer = (Customer) Customer.find("FROM Customer cus " +
+                    "WHERE cus.username = :username " +
+                    "AND cus.pwd = :pwd").bind("username", username)
+                    .bind("pwd", pwd).fetch().get(0);
+            Cache.add(username, customer);
+            session.put("username", username);
+            redirect("../View-info.html");
+        } catch (IndexOutOfBoundsException e) {
+            session.put("noti", "UsernameAndPassword");
+            redirect("../Login-form.html");
+        }
+    }
+
 
     public static void registerForm() {
+        if (session.get("noti") != null) {
+            renderArgs.put("noti", session.get("noti"));
+            session.remove("noti");
+        }
         render("customer/register.form.html");
     }
 
@@ -78,5 +106,4 @@ public class CustomerController extends Controller {
         renderArgs.put("customer", (Customer) Cache.get(session.get("username")));
         render("customer/view.info.html");
     }
-
 }

@@ -4,6 +4,8 @@ GET     /Clothes/Homepage.html                                      ClothesContr
 # Customer
 GET     /Customer/Register-form.html                                CustomerController.registerForm
 POST    /Customer/Register.html                                     CustomerController.register
+GET     /Customer/Login-form.html                                   CustomerController.loginForm
+POST    /Customer/Login.html                                        CustomerController.login
 GET     /Customer/View-info.html                                    CustomerController.viewInfo
 
 # Employee
