@@ -12,7 +12,7 @@ import play.mvc.Controller;
  * Created by Phuong on 16/03/2016.
  */
 public class CustomerController extends Controller {
-    @Before(unless = {"registerForm", "register"})
+    @Before(unless = {"registerForm", "register", "loginForm", "login"})
     static void checkNotAuthentification() {
         if (Cache.get(session.get("username")) == null) {
             redirect("../Login-form.html");
@@ -44,7 +44,7 @@ public class CustomerController extends Controller {
             Cache.add(username, customer);
             session.put("username", username);
             redirect("../View-info.html");
-        } catch (IndexOutOfBoundsException e) {
+        } catch (Exception e) {
             session.put("noti", "UsernameAndPassword");
             redirect("../Login-form.html");
         }
