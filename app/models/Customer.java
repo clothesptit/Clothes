@@ -13,6 +13,7 @@ import java.io.Serializable;
 public class Customer extends GenericModel implements Serializable {
     private static final long serialVersionUID = 10L;
     @Id
+    @Column(name = "id")
     public int id;
     @Column(length = 45, nullable = false)
     public String username;

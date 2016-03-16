@@ -3,6 +3,7 @@ GET     /Clothes/Homepage.html                                      ClothesContr
 
 # Customer
 GET     /Customer/Register-form.html                                CustomerController.registerForm
+POST    /Customer/Register.html                                     CustomerController.register
 GET     /Customer/View-info.html                                    CustomerController.viewInfo
 
 # Employee

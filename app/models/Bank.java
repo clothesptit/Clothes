@@ -13,6 +13,7 @@ import java.io.Serializable;
 public class Bank extends GenericModel implements Serializable {
     private static final long serialVersionUID = 11L;
     @Id
+    @Column(name = "id")
     public int id;
     @Column(length = 45, nullable = false)
     public String name;
