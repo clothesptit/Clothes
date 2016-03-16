@@ -30,6 +30,12 @@ public class Clothes extends GenericModel implements Serializable {
     @Column(nullable = false)
     public float price;
     @Column(nullable = false)
+    public float salePrice;
+    @Column(length = 255)
+    public String deal;
+    @Column(nullable = false)
+    public float pricePublisher;
+    @Column(nullable = false)
     public int quantity;
     @Column(length = 30)
     public String color;

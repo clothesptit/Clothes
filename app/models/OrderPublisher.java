@@ -20,6 +20,6 @@ public class OrderPublisher extends GenericModel implements Serializable {
     @Column(nullable = false)
     public int quantity;
     @ManyToOne
-    @JoinColumn(name = "id_cart_publisher")
-    public CartPublisher cartPublisher;
+    @JoinColumn(name = "id_bill_publisher")
+    public BillPublisher billPublisher;
 }

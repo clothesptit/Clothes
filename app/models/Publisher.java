@@ -14,8 +14,12 @@ public class Publisher extends GenericModel implements Serializable {
     private static final long serialVersionUID = 3L;
     @Id
     public int id;
-    @Column(length = 30)
+    @Column(length = 100)
     public String name;
-    @Column(length = 30)
+    @Column(length = 100)
     public String email;
+    @Column(length = 20)
+    public String phone;
+    @Column(length = 255)
+    public String address;
 }
