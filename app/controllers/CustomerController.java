@@ -44,7 +44,7 @@ public class CustomerController extends Controller {
             Cache.add(username, customer);
             session.put("username", username);
             redirect("../View-info.html");
-        } catch (IndexOutOfBoundsException e) {
+        } catch (Exception e) {
             session.put("noti", "UsernameAndPassword");
             redirect("../Login-form.html");
         }

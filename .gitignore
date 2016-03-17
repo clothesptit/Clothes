@@ -8,6 +8,8 @@ test
 dist
 /.idea
 /*.iml
+/*.iws
+/*.ipr
 /out
 /.idea_modules
 /.classpath
