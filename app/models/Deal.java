@@ -4,7 +4,7 @@ import play.db.jpa.GenericModel;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Created by Ha Thanh Tam on 17/03/2016.
@@ -17,7 +17,9 @@ public class Deal extends GenericModel implements Serializable {
     public int id;
     public int sale;
     public float voucher;
+    @Temporal(TemporalType.TIMESTAMP)
     public Date timeStart;
+    @Temporal(TemporalType.TIMESTAMP)
     public Date timeStop;
 
     public Deal(int sale, float voucher, Date timeStart, Date timeStop) {

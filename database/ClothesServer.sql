@@ -65,7 +65,6 @@ CREATE TABLE `bank` (
 
 LOCK TABLES `bank` WRITE;
 /*!40000 ALTER TABLE `bank` DISABLE KEYS */;
-INSERT INTO `bank` VALUES (1,'123456789','Visa','Agribank');
 /*!40000 ALTER TABLE `bank` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,7 +77,7 @@ DROP TABLE IF EXISTS `bill`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `bill` (
   `id` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `date` datetime NOT NULL,
   `paymentMethod` tinyint(1) NOT NULL,
   `id_address_shipping` int(11) DEFAULT NULL,
   `id_customer` int(11) DEFAULT NULL,
@@ -108,7 +107,7 @@ DROP TABLE IF EXISTS `billpublisher`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `billpublisher` (
   `id` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `date` datetime NOT NULL,
   `id_publisher` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_frum3v1eyc3m0f0h9dik9rbbg` (`id_publisher`),
@@ -220,7 +219,6 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'Nam Định','thanhtam.ha1994@hotmail.com','0918181003',0,'1234','hathanhtam',1);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,8 +232,8 @@ DROP TABLE IF EXISTS `deal`;
 CREATE TABLE `deal` (
   `id` int(11) NOT NULL,
   `sale` int(11) NOT NULL,
-  `timeStart` date DEFAULT NULL,
-  `timeStop` date DEFAULT NULL,
+  `timeStart` datetime DEFAULT NULL,
+  `timeStop` datetime DEFAULT NULL,
   `voucher` float NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -400,5 +398,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-17 20:25:00
+-- Dump completed on 2016-03-17 20:41:51
 GRANT ALL ON clothes.* TO clothes@localhost IDENTIFIED BY '1234';

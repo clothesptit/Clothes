@@ -4,7 +4,7 @@ import play.db.jpa.GenericModel;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,6 +17,7 @@ public class Bill extends GenericModel implements Serializable {
     @Id
     public int id;
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     public Date date;
     @Column(nullable = false)
     public boolean paymentMethod;

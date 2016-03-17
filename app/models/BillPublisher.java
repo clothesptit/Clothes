@@ -4,7 +4,7 @@ import play.db.jpa.GenericModel;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,6 +20,7 @@ public class BillPublisher extends GenericModel implements Serializable {
     @JoinColumn(name = "id_publisher")
     public Publisher publisher;
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     public Date date;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "billPublisher")
     public List<OrderPublisher> orderPublishers;
