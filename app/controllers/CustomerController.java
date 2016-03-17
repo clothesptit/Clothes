@@ -71,30 +71,20 @@ public class CustomerController extends Controller {
             session.put("noti", "UsernameExist");
             redirect("../Register-form.html");
         }
-        Bank bank = new Bank();
+        Bank bank = new Bank(name, cardNumber, cardType);
         int idBank = 0;
         try {
-            idBank = (int) JPA.em().createQuery("SELECT MAX(bank.id) FROM Bank bank").getSingleResult() + 1;
+            idBank = JPA.em().createQuery("SELECT MAX(b.id) FROM Bank b").getFirstResult() + 1;
         } catch (NullPointerException e) {
         }
         bank.id = idBank;
-        bank.name = name;
-        bank.cardNumber = cardNumber;
-        bank.cardType = cardType;
-        Customer customer = new Customer();
+        Customer customer = new Customer(username, pwd, email, phone, address, 0, bank);
         int idCustomer = 0;
         try {
-            idCustomer = (int) JPA.em().createQuery("SELECT MAX(cus.id) " +
-                    "FROM Customer cus").getSingleResult() + 1;
+            idCustomer = JPA.em().createQuery("SELECT MAX(cus.id) FROM Customer cus").getFirstResult() + 1;
         } catch (NullPointerException e) {
         }
         customer.id = idCustomer;
-        customer.username = username;
-        customer.pwd = pwd;
-        customer.email = email;
-        customer.phone = phone;
-        customer.address = address;
-        customer.bank = bank;
         bank.save();
         customer.save();
         Cache.add(username, customer);

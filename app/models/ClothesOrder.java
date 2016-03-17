@@ -9,9 +9,9 @@ import java.io.Serializable;
  * Created by Ha Thanh Tam on 16/03/2016.
  */
 @Entity
-@Table(name = "tblClothesOrder")
+@Table(name = "ClothesOrder")
 public class ClothesOrder extends GenericModel implements Serializable {
-    private static final long serialVersionUID = 15L;
+    private static final long serialVersionUID = 6L;
     @Id
     public int id;
     @Column(nullable = false)
@@ -22,4 +22,14 @@ public class ClothesOrder extends GenericModel implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_bill")
     public Bill bill;
+
+    public ClothesOrder(int quantity, Clothes clothes, Bill bill) {
+        this.quantity = quantity;
+        this.clothes = clothes;
+        this.bill = bill;
+    }
+
+    public ClothesOrder() {
+
+    }
 }
