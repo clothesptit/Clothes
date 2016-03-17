@@ -4,19 +4,20 @@ import play.db.jpa.GenericModel;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by Ha Thanh Tam on 16/03/2016.
  */
 @Entity
-@Table(name = "tblBill")
+@Table(name = "Bill")
 public class Bill extends GenericModel implements Serializable {
-    private static final long serialVersionUID = 17L;
+    private static final long serialVersionUID = 3L;
     @Id
     public int id;
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     public Date date;
     @Column(nullable = false)
     public boolean paymentMethod;
@@ -28,4 +29,16 @@ public class Bill extends GenericModel implements Serializable {
     public Customer customer;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "bill")
     public List<ClothesOrder> clothesOrderList;
+
+    public Bill(Date date, boolean paymentMethod, AddressShipping addressShipping, Customer customer, List<ClothesOrder> clothesOrderList) {
+        this.date = date;
+        this.paymentMethod = paymentMethod;
+        this.addressShipping = addressShipping;
+        this.customer = customer;
+        this.clothesOrderList = clothesOrderList;
+    }
+
+    public Bill() {
+
+    }
 }

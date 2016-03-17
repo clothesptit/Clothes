@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "tblOrderPublisher")
 public class OrderPublisher extends GenericModel implements Serializable {
-    private static final long serialVersionUID = 18L;
+    private static final long serialVersionUID = 11L;
     @Id
     public int id;
     @ManyToOne
@@ -22,4 +22,17 @@ public class OrderPublisher extends GenericModel implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_bill_publisher")
     public BillPublisher billPublisher;
+    @ManyToOne
+    @JoinColumn(name = "id_deal")
+    public Deal deal;
+
+    public OrderPublisher(Clothes clothes, int quantity, BillPublisher billPublisher, Deal deal) {
+        this.clothes = clothes;
+        this.quantity = quantity;
+        this.billPublisher = billPublisher;
+        this.deal = deal;
+    }
+
+    public OrderPublisher() {
+    }
 }

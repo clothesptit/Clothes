@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="f95aaa71-168e-46cc-bc1a-a0ec6466b414" name="Default" comment="" />
+=======
+    <list default="true" id="f95aaa71-168e-46cc-bc1a-a0ec6466b414" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Clothes.iws" afterPath="$PROJECT_DIR$/Clothes.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/CustomerController.java" afterPath="$PROJECT_DIR$/app/controllers/CustomerController.java" />
+<<<<<<< HEAD
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/customer/login.form.html" afterPath="$PROJECT_DIR$/app/views/customer/login.form.html" />
+>>>>>>> 664a42aaaa0df87f944c73cefd044295f7d40ec6
+    </list>
+>>>>>>> 3a5d4ac8ece00c4f38874f6b89af13481d74d395
     <ignored path="Clothes.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/tmp/classes/" />
@@ -37,17 +48,26 @@
         <entry file="file://$PROJECT_DIR$/conf/routes">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
+              <caret line="6" column="96" selection-start-line="6" selection-start-column="96" selection-end-line="6" selection-end-column="96" />
+=======
               <caret line="6" column="96" selection-start-line="6" selection-start-column="87" selection-end-line="6" selection-end-column="96" />
+>>>>>>> 664a42aaaa0df87f944c73cefd044295f7d40ec6
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomerController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CustomerController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/CustomerController.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state vertical-scroll-proportion="0.4620462">
+              <caret line="14" column="69" selection-start-line="14" selection-start-column="69" selection-end-line="14" selection-end-column="69" />
+=======
             <state vertical-scroll-proportion="0.0">
               <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+>>>>>>> 664a42aaaa0df87f944c73cefd044295f7d40ec6
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -175,7 +195,10 @@
         <option value="$PROJECT_DIR$/app/models/Customer.java" />
         <option value="$PROJECT_DIR$/conf/routes" />
         <option value="$PROJECT_DIR$/app/controllers/CustomerController.java" />
+<<<<<<< HEAD
+=======
         <option value="$PROJECT_DIR$/app/views/customer/login.form.html" />
+>>>>>>> 664a42aaaa0df87f944c73cefd044295f7d40ec6
       </list>
     </option>
   </component>
@@ -927,12 +950,20 @@
       <workItem from="1458111649611" duration="165000" />
       <workItem from="1458113561762" duration="2274000" />
       <workItem from="1458116090926" duration="1525000" />
-      <workItem from="1458117637937" duration="767000" />
+      <workItem from="1458117637937" duration="1383000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="17288000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="16316000" />
+=======
+    <option name="totallyTimeSpent" value="16691000" />
+>>>>>>> 664a42aaaa0df87f944c73cefd044295f7d40ec6
+>>>>>>> 3a5d4ac8ece00c4f38874f6b89af13481d74d395
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
@@ -1341,6 +1372,23 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/conf/routes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="96" selection-start-line="6" selection-start-column="96" selection-end-line="6" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/CustomerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4620462">
+          <caret line="14" column="69" selection-start-line="14" selection-start-column="69" selection-end-line="14" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+=======
     <entry file="file://$PROJECT_DIR$/app/views/customer/view.info.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.827586">
@@ -1388,6 +1436,7 @@
         <state vertical-scroll-proportion="0.41594455">
           <caret line="12" column="63" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
           <folding />
+>>>>>>> 664a42aaaa0df87f944c73cefd044295f7d40ec6
         </state>
       </provider>
     </entry>
