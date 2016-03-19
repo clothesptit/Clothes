@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `clothes` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `clothes`;
--- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
--- Host: localhost    Database: clothes
+-- Host: 127.0.0.1    Database: clothes
 -- ------------------------------------------------------
--- Server version	5.6.26-log
+-- Server version	5.7.11-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -202,6 +202,7 @@ CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
+  `fullName` varchar(100) NOT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `point` int(11) NOT NULL,
   `pwd` varchar(45) NOT NULL,
@@ -398,5 +399,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-17 20:41:51
+-- Dump completed on 2016-03-19 13:38:03
 GRANT ALL ON clothes.* TO clothes@localhost IDENTIFIED BY '1234';

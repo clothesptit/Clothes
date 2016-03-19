@@ -14,22 +14,20 @@ public class ClothesOrder extends GenericModel implements Serializable {
     private static final long serialVersionUID = 6L;
     @Id
     public int id;
-    @Column(nullable = false)
-    public int quantity;
     @OneToOne
     @JoinColumn(name = "id_clothes", nullable = false)
     public Clothes clothes;
+    @Column(nullable = false)
+    public int quantity;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_bill")
     public Bill bill;
 
-    public ClothesOrder(int quantity, Clothes clothes, Bill bill) {
-        this.quantity = quantity;
+    public ClothesOrder(Clothes clothes, int quantity) {
         this.clothes = clothes;
-        this.bill = bill;
+        this.quantity = quantity;
     }
 
     public ClothesOrder() {
-
     }
 }
