@@ -22,12 +22,11 @@ public class Mails extends Mailer {
         bill.customer = new Customer();
         bill.customer.email = "";
         bill.customer.fullName = "Nguyễn Thị Phương";
-        bill.customer.address = "Hải Dương";
         bill.customer.phone = "0987654321";
         bill.addressShipping = new AddressShipping("97A", "Mỗ Lao", "Hà Đông", "Hà Nội");
         setSubject("Xác nhận đơn đặt hàng quần áo");
         addRecipient(bill.customer.email);
-        setFrom("Support Demo PTIT <demoptit@gmail.com>");
+        setFrom("Website Bán Quần Áo <demoptit@gmail.com>");
         String token = random.randomAlphanumeric(32);
         while (Cache.get(token) != null) {
             token = random.randomAlphanumeric(32);
