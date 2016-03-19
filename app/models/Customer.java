@@ -20,6 +20,8 @@ public class Customer extends GenericModel implements Serializable {
     @Column(length = 45, nullable = false)
     public String pwd;
     @Column(length = 100, nullable = false)
+    public String fullName;
+    @Column(length = 100, nullable = false)
     public String email;
     @Column(length = 20)
     public String phone;
@@ -30,7 +32,7 @@ public class Customer extends GenericModel implements Serializable {
     @JoinColumn(name = "id_bank")
     public Bank bank;
 
-    public Customer(String username, String pwd, String email, String phone, String address, int point, Bank bank) {
+    public Customer(String username, String pwd, String fullName, String email, String phone, String address, int point, Bank bank) {
         this.username = username;
         this.pwd = pwd;
         this.email = email;

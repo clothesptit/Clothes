@@ -8,6 +8,9 @@ GET     /Customer/Login-form.html                                   CustomerCont
 POST    /Customer/Login.html                                        CustomerController.login
 GET     /Customer/View-info.html                                    CustomerController.viewInfo
 
+# Bill
+GET     /Bill/Confirm-bill.html                                     BillController.confirmBill
+
 # Employee
 GET     /Employee/Login-form.html                                   EmployeeController.loginForm
 POST    /Employee/Login.html                                        EmployeeController.login

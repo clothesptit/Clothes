@@ -59,7 +59,7 @@ public class CustomerController extends Controller {
         render("customer/register.form.html");
     }
 
-    public synchronized static void register(String username, String pwd, String email,
+    public synchronized static void register(String username, String pwd, String fullName, String email,
                                              String phone, String address, String name,
                                              String cardNumber, String cardType) {
         Validation.ValidationResult result = validation.email(email);
@@ -78,7 +78,7 @@ public class CustomerController extends Controller {
         } catch (NullPointerException e) {
         }
         bank.id = idBank;
-        Customer customer = new Customer(username, pwd, email, phone, address, 0, bank);
+        Customer customer = new Customer(username, pwd, fullName, email, phone, address, 0, bank);
         int idCustomer = 0;
         try {
             idCustomer = JPA.em().createQuery("SELECT MAX(cus.id) FROM Customer cus").getFirstResult() + 1;
