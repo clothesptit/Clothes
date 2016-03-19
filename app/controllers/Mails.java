@@ -20,7 +20,7 @@ public class Mails extends Mailer {
 
     public static void sendConfirmOrder(Bill bill) {
         bill.customer = new Customer();
-        bill.customer.email = "";
+        bill.customer.email = "phuongnt161@gmail.com";
         bill.customer.fullName = "Nguyễn Thị Phương";
         bill.customer.phone = "0987654321";
         bill.addressShipping = new AddressShipping("97A", "Mỗ Lao", "Hà Đông", "Hà Nội");
