@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
 </head>
 <body>
+Xin chào ${bill.customer.fullName}<br>
+Thông tin đơn hàng:<br>
 #{list items:bill.clothesOrderList,as:'clothesOrder'}
-${clothesOrder.clothes.title} ${clothesOrder.quantity}<br>
+<table>
+    <tr>
+        <td>${clothesOrder.clothes.title}</td>
+        <td>${clothesOrder.clothes.size}</td>
+        <td>${clothesOrder.clothes.price}</td>
+        <td>${clothesOrder.quantity}</td>
+    </tr>
+</table>
 #{/list}
+Thời gian đặt mua: ${bill.displayDate()}<br>
+Bạn hãy Click vào Link dưới đây để xác nhận đơn hàng<br>
+<a href="${linkConfirm}">Link xác nhận</a>
 </body>
 </html>

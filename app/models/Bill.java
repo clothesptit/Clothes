@@ -4,6 +4,7 @@ import play.db.jpa.GenericModel;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -40,5 +41,11 @@ public class Bill extends GenericModel implements Serializable {
 
     public Bill() {
 
+    }
+
+    public String displayDate() {
+        String pattern = "hh:mm:ss dd/MM/YYYY";
+        SimpleDateFormat format = new SimpleDateFormat(pattern);
+        return format.format(date).toString();
     }
 }
