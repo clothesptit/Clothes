@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="84632a02-497f-4bfd-a545-abade8d6a634" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/BillController.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/Mails.java" />
@@ -9,6 +10,12 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/mails/send.status.order.html" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/system.properties" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/database/ClothesServer.sql" afterPath="" />
+=======
+<<<<<<< HEAD
+    <list default="true" id="f95aaa71-168e-46cc-bc1a-a0ec6466b414" name="Default" comment="" />
+=======
+    <list default="true" id="f95aaa71-168e-46cc-bc1a-a0ec6466b414" name="Default" comment="">
+>>>>>>> 704859337a039ca4fc30833aad05147cdf54c4f2
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Clothes.iws" afterPath="$PROJECT_DIR$/Clothes.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/CustomerController.java" afterPath="$PROJECT_DIR$/app/controllers/CustomerController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/ClothesOrder.java" afterPath="$PROJECT_DIR$/app/models/ClothesOrder.java" />
@@ -17,6 +24,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/dependencies.yml" afterPath="$PROJECT_DIR$/conf/dependencies.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/routes" afterPath="$PROJECT_DIR$/conf/routes" />
     </list>
+>>>>>>> 3a5d4ac8ece00c4f38874f6b89af13481d74d395
     <ignored path="Clothes.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/tmp/classes/" />
@@ -729,7 +737,19 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="6008000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="17288000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="16316000" />
+=======
+    <option name="totallyTimeSpent" value="16691000" />
+>>>>>>> 664a42aaaa0df87f944c73cefd044295f7d40ec6
+>>>>>>> 3a5d4ac8ece00c4f38874f6b89af13481d74d395
+>>>>>>> 704859337a039ca4fc30833aad05147cdf54c4f2
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
