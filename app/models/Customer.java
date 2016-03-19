@@ -35,6 +35,7 @@ public class Customer extends GenericModel implements Serializable {
     public Customer(String username, String pwd, String fullName, String email, String phone, String address, int point, Bank bank) {
         this.username = username;
         this.pwd = pwd;
+        this.fullName = fullName;
         this.email = email;
         this.phone = phone;
         this.address = address;

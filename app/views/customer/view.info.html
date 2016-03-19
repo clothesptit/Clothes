@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Trang thông tin cá nhân</title>
+    <title>Hien thi thong tin</title>
+    #{stylesheet 'bootstrap.min.css'/}
+    #{stylesheet 'clothes/style.css'/}
 </head>
 <body>
-${customer.bank.name}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 padding right">
+            <p><img src="images/myphoto.png" class="img-responsive" alt=""></p>
+
+        </div>
+        <div class="col-md-3" >
+            <h1 class="title">Hiển thị thông tin cá nhân</h1>
+            <hr width="70%" align="center" color="yellow" height="4dp"/>
+            <div class="p">
+            <p>Tên khách hàng: </p>
+            <p>Mã khách hàng:</p>
+            <p>Tên tài khoản: </p>
+            <p>Email: </p>
+            <p>Phone: </p>
+            <p>Địa chỉ: </p>
+            <p>Điểm tích lũy:  </p>
+            <hr width="70%" align="center" color="yellow"/>
+            <p>Ngân hàng giao dịch:  </p>
+            <p>Mã thẻ:  </p>
+            <p>Loại thẻ:  </p>
+                  </div>
+        </div>
+        <div class="col-md-3" >
+            <br><br><br> <br>
+           <h1 class="title"></h1> <hr width="50%" align="center" color="red"/>
+            <div class="p">
+            <p> ${customer.fullName}</p>
+            <p> ${customer.id}</p>
+            <p> ${customer.username}</p>
+            <p> ${customer.email}</p>
+            <p> ${customer.phone}</p>
+            <p>  ${customer.address}</p>
+            <p>${customer.point}</p>
+            <hr width="30%" align="center" color="red"/>
+            <p>${customer.bank.name} </p>
+            <p>${customer.bank.cardNumber}</p>
+            <p>${customer.bank.cardType}</p>
+
+        </div>
+            </div>
+    </div>
+</div>
+#{script 'jquery.js'/}
+#{script 'bootstrap.min.js'/}
 </body>
 </html>
