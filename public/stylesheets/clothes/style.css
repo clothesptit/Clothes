@@ -1,0 +1,17 @@
+.container{
+    background-color: #d4d4d4;
+
+}
+.p{
+    color: #0f0f0f;
+    -moz-text-size-adjust: 20px;
+}
+
+.row{
+    color: #b2dba1;
+}
+.title{
+    color: #d43f3a;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
