@@ -1,2 +1,2 @@
-Web Server:
-	- Mail đang chạy thử.
+- Chức năng gửi Email xác nhận đơn hàng chưa làm giao diện.
+Link test mail: http://localhost:9000/Bill/Confirm-bill.html
