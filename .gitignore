@@ -8,6 +8,7 @@ test
 dist
 /.idea
 /*.iml
+/*.ids
 /*.iws
 /*.ipr
 /out
