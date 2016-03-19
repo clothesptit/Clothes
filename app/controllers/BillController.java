@@ -9,7 +9,6 @@ import play.mvc.Controller;
 public class BillController extends Controller {
 
     public static void billForm() {
-
     }
 
     public static void confirmBill() {
