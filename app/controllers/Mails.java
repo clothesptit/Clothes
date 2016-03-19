@@ -1,9 +1,6 @@
 package controllers;
 
-import models.Bill;
-import models.Clothes;
-import models.ClothesOrder;
-import models.Customer;
+import models.*;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.mail.EmailAttachment;
 import play.Play;
@@ -23,10 +20,11 @@ public class Mails extends Mailer {
 
     public static void sendConfirmOrder(Bill bill) {
         bill.customer = new Customer();
-        bill.customer.email = "thanhtam.ha1994@hotmail.com";
+        bill.customer.email = "";
         bill.customer.fullName = "Nguyễn Thị Phương";
         bill.customer.address = "Hải Dương";
         bill.customer.phone = "0987654321";
+        bill.addressShipping = new AddressShipping("97A", "Mỗ Lao", "Hà Đông", "Hà Nội");
         setSubject("Xác nhận đơn đặt hàng quần áo");
         addRecipient(bill.customer.email);
         setFrom("Support Demo PTIT <demoptit@gmail.com>");

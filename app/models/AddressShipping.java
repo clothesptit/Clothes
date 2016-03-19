@@ -32,4 +32,9 @@ public class AddressShipping extends GenericModel implements Serializable {
 
     public AddressShipping() {
     }
+
+    @Override
+    public String toString() {
+        return num + " - " + ward + " - " + district + " - " + city;
+    }
 }
