@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Created by Ha Thanh Tam on 16/03/2016.
  */
 @Entity
-@Table(name = "tblOrderPublisher")
+@Table(name = "OrderPublisher")
 public class OrderPublisher extends GenericModel implements Serializable {
     private static final long serialVersionUID = 11L;
     @Id

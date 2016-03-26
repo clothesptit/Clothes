@@ -20,6 +20,8 @@ GET     /Seller/Seller.html                                         SellerContro
 
 # Admin
 GET     /Admin/Admin.html                                           AdminController.admin
+GET     /Admin/Show-list-publisher.html                             AdminController.showListPublisher
+GET     /Admin/Show-list-clothes.html                               AdminController.showListClothes
 
 
 # Ignore favicon requests

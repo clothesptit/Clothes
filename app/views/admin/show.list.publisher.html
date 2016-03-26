@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách nhà bán buôn</title>
+</head>
+<body>
+<table border="solid 1px">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Address</td>
+        <td>Email</td>
+        <td>Phone</td>
+    </tr>
+#{if listPublisher != null}
+    #{list items:listPublisher, as:'publisher'}
+        <tr>
+            <td>${publisher.id}</td>
+            <td>${publisher.name}</td>
+            <td>${publisher.address}</td>
+            <td>${publisher.email}</td>
+            <td>${publisher.phone}</td>
+        </tr>
+    #{/list}
+#{/if}
+</table>
+</body>
+</html>
