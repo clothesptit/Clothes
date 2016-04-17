@@ -37,14 +37,6 @@ public class Mails extends Mailer {
         Clothes clothes = new Clothes();
         clothes.title = "Áo 1";
         clothes.size = "M";
-        bill.clothesOrderList = new ArrayList<ClothesOrder>();
-        bill.clothesOrderList.add(new ClothesOrder(clothes, 3));
-        clothes.title = "Áo 2";
-        clothes.size = "L";
-        bill.clothesOrderList.add(new ClothesOrder(clothes, 2));
-        clothes.title = "Áo 3";
-        clothes.size = "XL";
-        bill.clothesOrderList.add(new ClothesOrder(clothes, 1));
 //        EmailAttachment attachment;
 //        for (int i = 0; i < bill.clothesOrderList.size(); i++) {
 //            attachment = new EmailAttachment();

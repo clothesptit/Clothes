@@ -7,17 +7,17 @@
 <body>
 <h1>Đăng ký</h1>
 <form action="Register.html" method="post">
-    <input type="text" name="username" size="20" value="Username">
+    <input type="text" name="username" size="20" placeholder="Username">
     <br>
-    <input type="password" name="pwd" size="20" value="Password">
+    <input type="password" name="pwd" size="20" placeholder="Password">
     <br>
-    <input type="text" name="fullName" size="20" value="Fullname">
+    <input type="text" name="fullName" size="20" placeholder="Fullname">
     <br>
-    <input type="text" name="email" size="20" value="Email">
+    <input type="text" name="email" size="20" placeholder="Email">
     <br>
-    <input type="text" name="phone" size="20" value="Phone">
+    <input type="text" name="phone" size="20" placeholder="Phone">
     <br>
-    <input type="text" name="address" size="40" value="Address">
+    <input type="text" name="address" size="40" placeholder="Address">
     <br>
     <input type="radio" name="name" value="BIDV" onmousemove="window.status='BIDV';">BIDV
     <input type="radio" name="name" value="Agribank" onmousemove="window.status='Agribank';">Agribank
@@ -26,9 +26,11 @@
     <input type="radio" name="cardType" value="Master" onmousemove="window.status='Master';">Master
     <input type="radio" name="cardType" value="Visa" onmousemove="window.status='Visa';">Visa
     <br>
-    <input type="text" name="cardNumber" size="20" value="Card number">
+    <input type="text" name="cardNumber" size="20" placeholder="Card number">
     <br>
-    <input type="submit" value="Register">
+    <input type="submit" value="Đăng ký">
+    <br>
+    <input type="button" value="Đăng nhập" onclick="window.location='Login-form.html'">
 </form>
 </body>
 </html>

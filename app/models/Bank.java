@@ -15,11 +15,11 @@ public class Bank extends GenericModel implements Serializable {
     @Id
     @Column(name = "id")
     public int id;
-    @Column(length = 45, nullable = false)
+    @Column(length = 45)
     public String name;
-    @Column(length = 20, nullable = false)
+    @Column(length = 20)
     public String cardNumber;
-    @Column(length = 20, nullable = false)
+    @Column(length = 20)
     public String cardType;
 
     public Bank(String name, String cardNumber, String cardType) {

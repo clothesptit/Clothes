@@ -14,15 +14,15 @@ public class Clothes extends GenericModel implements Serializable {
     private static final long serialVersionUID = 5L;
     @Id
     public int id;
-    @Column(length = 30)
+    @Column(length = 200)
     public String title;
-    @Column(length = 30)
+    @Column(length = 200)
     public String image;
     @Column(length = 30)
     public String type;
     @Column(length = 30)
     public String size;
-    @Column(length = 30)
+    @Column(length = 200)
     public String material;
     @Column(nullable = false)
     public float price;
@@ -32,7 +32,7 @@ public class Clothes extends GenericModel implements Serializable {
     public int quantity;
     @Column(length = 30)
     public String color;
-    @Column(length = 255)
+    @Column(length = 1000)
     public String description;
     @ManyToOne
     @JoinColumn(name = "id_publisher")
@@ -57,6 +57,5 @@ public class Clothes extends GenericModel implements Serializable {
     }
 
     public Clothes() {
-
     }
 }

@@ -12,6 +12,7 @@
         <td>Address</td>
         <td>Email</td>
         <td>Phone</td>
+        <td>Show Product</td>
     </tr>
 #{if listPublisher != null}
     #{list items:listPublisher, as:'publisher'}
@@ -21,6 +22,7 @@
             <td>${publisher.address}</td>
             <td>${publisher.email}</td>
             <td>${publisher.phone}</td>
+            <td><a href="Show-list-clothes.html?idPublisher=${publisher.id}">Show</a></td>
         </tr>
     #{/list}
 #{/if}

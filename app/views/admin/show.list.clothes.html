@@ -5,6 +5,64 @@
     <title>Danh sách quần áo từ nhà cung cấp</title>
 </head>
 <body>
-
+#{if clothesList!=null}
+<table border="solid 1px">
+    <tr style="text-align: center">
+        <td>Id</td>
+        <td>Title</td>
+        <td>Image</td>
+        <td>Type</td>
+        <td>Size</td>
+        <td>Material</td>
+        <td>Price</td>
+        <td>Price After Sale</td>
+        <td>Price Publisher</td>
+        <td>Quantity</td>
+        <td>Color</td>
+        <td>Description</td>
+        <td>Publisher</td>
+        <td colspan="4">Deal</td>
+    </tr>
+    #{set index:0/}
+    #{list items:clothesList,as:'clothes'}
+        <form action="Add-clothes-publisher.html?idPublisher=${clothes.publisher.id}&index=${index}" method="post">
+            <tr>
+                <td>${clothes.id}</td>
+                <td>${clothes.title}</td>
+                <td><img src="${clothes.image}" width="100px"></td>
+                <td>${clothes.type}</td>
+                <td>${clothes.size}</td>
+                <td>${clothes.material}</td>
+                <td><input type="text" name="price" onchange="onChangeSale('${index}')"
+                           id="price${index}" placeholder="Price" size="5"></td>
+                <td><span id="priceAfterSale${index}"></span></td>
+                <td>${clothes.pricePublisher}</td>
+                <td>${clothes.quantity}</td>
+                <td>${clothes.color}</td>
+                <td>${clothes.description}</td>
+                <td>${clothes.publisher.name}</td>
+                <td><input type="text"
+                           id="sale${index}"
+                           onchange="onChangeSale('${index}')" name="sale"
+                           placeholder="Sale"
+                           size="1"></td>
+                <td><input type="text" name="voucher" placeholder="Voucher" size="3"></td>
+                <td><input type="text" name="timeStart" placeholder="Time Start" size="7"></td>
+                <td><input type="text" name="timeStop" placeholder="Time Stop" size="7"></td>
+                <td><input type="submit" value="Add"></td>
+            </tr>
+        </form>
+        #{set index=index+1/}
+    #{/list}
+</table>
+#{/if}
+<script>
+    function onChangeSale(index) {
+        var price = parseFloat(document.getElementById("price" + index).value);
+        var sale = parseInt(document.getElementById("sale" + index).value);
+        var priceSale = price * (100 - sale) / 100;
+        document.getElementById("priceAfterSale" + index).innerHTML = priceSale;
+    }
+</script>
 </body>
 </html>

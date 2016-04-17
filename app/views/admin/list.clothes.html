@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách sản phẩm đã nhập</title>
+</head>
+<body>
+<div style="margin-top: 50px; margin-left: 50px">
+    Tìm kiếm sản phẩm:
+    <form action="Search-clothes.html">
+        <input type="text" placeholder="Tìm kiếm..." name="txtSearch" size="30">
+        <input type="submit" value="Tìm kiếm">
+    </form>
+    <br>
+    <br>
+    Áp dụng chính sách khuyến mại hàng loạt:<br>
+    <form id="frmSetDeal">
+        <input type="text" name="sale" placeholder="Sale">
+        <input type="text" name="voucher" placeholder="Voucher">
+        <input type="text" name="timeStart" placeholder="Time Start">
+        <input type="text" name="timeStop" placeholder="Time Stop">
+        <input type="submit" id="btnSetDeal" value="Áp dụng">
+    </form>
+    <br>
+    <br>
+    <br>
+</div>
+#{if clothesList!=null}
+<form action="Save-clothes.html" id="frmClothes" method="post">
+    <table border="solid 1px">
+        <tr style="text-align: center">
+            <td>Id</td>
+            <td>Title</td>
+            <td>Image</td>
+            <td>Type</td>
+            <td>Size</td>
+            <td>Material</td>
+            <td>Price</td>
+            <td>Price After Sale</td>
+            <td>Price Publisher</td>
+            <td>Quantity</td>
+            <td>Color</td>
+            <td>Description</td>
+            <td>Publisher</td>
+            <td colspan="4">Deal</td>
+        </tr>
+        #{set index:0/}
+        #{list items:clothesList,as:'clothes'}
+            <tr>
+                <td>${clothes.id}</td>
+                <td>${clothes.title}</td>
+                <td><img src="${clothes.image}" width="100px"></td>
+                <td>${clothes.type}</td>
+                <td>${clothes.size}</td>
+                <td>${clothes.material}</td>
+                <td><input type="text"
+                           name="price"
+                           value="${clothes.price}"
+                           onchange="onChangeSale('${index}')"
+                           id="price${index}" placeholder="Price" size="5"></td>
+                <td>
+                    <span id="priceAfterSale${index}">
+                        ${clothes.price * (100 - clothes.deal.sale) / 100}
+                    </span>
+                </td>
+                <td>${clothes.pricePublisher}</td>
+                <td>${clothes.quantity}</td>
+                <td>${clothes.color}</td>
+                <td>${clothes.description}</td>
+                <td>${clothes.publisher.name}</td>
+                <td><input type="text"
+                           value="${clothes.deal.sale}"
+                           id="sale${index}"
+                           onchange="onChangeSale('${index}')"
+                           name="sale"
+                           placeholder="Sale"
+                           size="1"></td>
+                <td><input type="text" name="voucher"
+                           value="${clothes.deal.voucher}" placeholder="Voucher" size="3">
+                </td>
+                <td><input type="text" name="timeStart"
+                           value="${clothes.deal.timeStart}" placeholder="Time Start"
+                           size="7"></td>
+                <td><input type="text" name="timeStop"
+                           value="${clothes.deal.timeStop}" placeholder="Time Stop"
+                           size="7"></td>
+                <td><input type="checkbox" name="idCheck" value="${clothes.id}"></td>
+            </tr>
+            #{set index=index+1/}
+        #{/list}
+    </table>
+    <br>
+    <input type="submit" value="Save">&nbsp; <input type="button" id="btnDelete" value="Delete">
+</form>
+#{/if}
+<script>
+    var btnDelete = document.getElementById("btnDelete");
+    function deleteClothes() {
+        frmClothes.action = "Delete-clothes.html";
+        frmClothes.method = "get";
+        frmClothes.submit();
+    }
+
+    btnDelete.onclick = function () {
+        deleteClothes();
+    }
+
+    var btnSetDeal = document.getElementById("btnSetDeal");
+    function checkSetDeal() {
+        var checkBox = document.getElementsByName("idCheck");
+        var idCheck = "";
+        for (var i = 0; i < checkBox.length; i++) {
+            if (checkBox[i].checked) {
+                idCheck = idCheck + checkBox[i].value + " ";
+            }
+        }
+        idCheck = idCheck.trim();
+        var frmSetDeal = document.getElementById("frmSetDeal");
+        frmSetDeal.action = "Set-deal-/" + idCheck + ".html?idCheck=";
+        frmSetDeal.submit();
+    }
+    btnSetDeal.onclick = function () {
+        checkSetDeal();
+    }
+</script>
+</body>
+</html>

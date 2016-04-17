@@ -14,7 +14,7 @@ public class ClothesOrder extends GenericModel implements Serializable {
     private static final long serialVersionUID = 6L;
     @Id
     public int id;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_clothes", nullable = false)
     public Clothes clothes;
     @Column(nullable = false)

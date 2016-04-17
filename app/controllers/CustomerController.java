@@ -74,18 +74,18 @@ public class CustomerController extends Controller {
         Bank bank = new Bank(name, cardNumber, cardType);
         int idBank = 0;
         try {
-            idBank = JPA.em().createQuery("SELECT MAX(b.id) FROM Bank b").getFirstResult() + 1;
+            idBank = (Integer) JPA.em().createQuery("SELECT MAX(b.id) FROM Bank b").getSingleResult() + 1;
         } catch (NullPointerException e) {
         }
         bank.id = idBank;
+        bank.save();
         Customer customer = new Customer(username, pwd, fullName, email, phone, address, 0, bank);
         int idCustomer = 0;
         try {
-            idCustomer = JPA.em().createQuery("SELECT MAX(cus.id) FROM Customer cus").getFirstResult() + 1;
+            idCustomer = (Integer) JPA.em().createQuery("SELECT MAX(cus.id) FROM Customer cus").getSingleResult() + 1;
         } catch (NullPointerException e) {
         }
         customer.id = idCustomer;
-        bank.save();
         customer.save();
         Cache.add(username, customer);
         session.put("username", username);

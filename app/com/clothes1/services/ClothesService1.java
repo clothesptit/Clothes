@@ -14,4 +14,7 @@ public interface ClothesService1 {
 
     public String findClothesByType(String type);
 
+    public boolean checkQuantityClothes(int id, String token);
+
+    public void createOrder(String jsonId, String token, String jsonQuantity);
 }

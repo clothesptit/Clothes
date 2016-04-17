@@ -1,28 +1,33 @@
 # Clothes
-GET     /Clothes/Homepage.html                                      ClothesController.homepage
+GET         /Clothes/Homepage.html                       ClothesController.homepage
 
 # Customer
-GET     /Customer/Register-form.html                                CustomerController.registerForm
-POST    /Customer/Register.html                                     CustomerController.register
-GET     /Customer/Login-form.html                                   CustomerController.loginForm
-POST    /Customer/Login.html                                        CustomerController.login
-GET     /Customer/View-info.html                                    CustomerController.viewInfo
+GET         /Customer/Register-form.html                 CustomerController.registerForm
+POST        /Customer/Register.html                      CustomerController.register
+GET         /Customer/Login-form.html                    CustomerController.loginForm
+POST        /Customer/Login.html                         CustomerController.login
+GET         /Customer/View-info.html                     CustomerController.viewInfo
 
 # Bill
-GET     /Bill/Confirm-bill.html                                     BillController.confirmBill
+GET         /Bill/Confirm-bill.html                      BillController.confirmBill
 
 # Employee
-GET     /Employee/Login-form.html                                   EmployeeController.loginForm
-POST    /Employee/Login.html                                        EmployeeController.login
+GET         /Employee/Login-form.html                    EmployeeController.loginForm
+POST        /Employee/Login.html                         EmployeeController.login
 
 # Seller
-GET     /Seller/Seller.html                                         SellerController.seller
+GET         /Seller/Seller.html                          SellerController.seller
 
 # Admin
-GET     /Admin/Admin.html                                           AdminController.admin
-GET     /Admin/Show-list-publisher.html                             AdminController.showListPublisher
-GET     /Admin/Show-list-clothes.html                               AdminController.showListClothes
-
+GET         /Admin/Admin.html                            AdminController.admin
+GET         /Admin/Show-list-publisher.html              AdminController.showListPublisher
+GET         /Admin/Show-list-clothes.html                AdminController.showListClothes
+POST        /Admin/Add-clothes-publisher.html            AdminController.addClothesPublisher
+GET         /Admin/List-clothes.html                     AdminController.listClothes
+GET         /Admin/Search-clothes.html                   AdminController.searchClothes
+GET         /Admin/Set-deal-/{idCheck}.html              AdminController.setDeal
+POST        /Admin/Save-clothes.html                     AdminController.saveClothes
+GET         /Admin/Delete-clothes.html                   AdminController.deleteClothes
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
