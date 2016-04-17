@@ -52,9 +52,9 @@ DROP TABLE IF EXISTS `bank`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `bank` (
   `id` int(11) NOT NULL,
-  `cardNumber` varchar(20) NOT NULL,
-  `cardType` varchar(20) NOT NULL,
-  `name` varchar(45) NOT NULL,
+  `cardNumber` varchar(20) DEFAULT NULL,
+  `cardType` varchar(20) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -65,6 +65,7 @@ CREATE TABLE `bank` (
 
 LOCK TABLES `bank` WRITE;
 /*!40000 ALTER TABLE `bank` DISABLE KEYS */;
+INSERT INTO `bank` VALUES (1,'12345678','Visa','Agribank'),(2,'123456789','Visa','Agribank'),(3,'123456789','Master','Techcombank');
 /*!40000 ALTER TABLE `bank` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,14 +135,14 @@ DROP TABLE IF EXISTS `clothes`;
 CREATE TABLE `clothes` (
   `id` int(11) NOT NULL,
   `color` varchar(30) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `image` varchar(30) DEFAULT NULL,
-  `material` varchar(30) DEFAULT NULL,
+  `description` longtext,
+  `image` varchar(200) DEFAULT NULL,
+  `material` varchar(200) DEFAULT NULL,
   `price` float NOT NULL,
   `pricePublisher` float NOT NULL,
   `quantity` int(11) NOT NULL,
   `size` varchar(30) DEFAULT NULL,
-  `title` varchar(30) DEFAULT NULL,
+  `title` varchar(200) DEFAULT NULL,
   `type` varchar(30) DEFAULT NULL,
   `id_deal` int(11) DEFAULT NULL,
   `id_publisher` int(11) DEFAULT NULL,
@@ -220,6 +221,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES (0,'Nam Định','thanhtam.ha1994@hotmail.com','Hà Thanh Tâm','0918181003',0,'1234','test',2),(1,'Nam Định','thanhtam.ha1994@gmail.com','Hà Thanh Tâm','0918181003',0,'1234','test1',3);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,6 +248,7 @@ CREATE TABLE `deal` (
 
 LOCK TABLES `deal` WRITE;
 /*!40000 ALTER TABLE `deal` DISABLE KEYS */;
+INSERT INTO `deal` VALUES (0,0,NULL,NULL,0);
 /*!40000 ALTER TABLE `deal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,31 +281,40 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
+INSERT INTO `employee` VALUES (1,'Nam Định','12345678','thanhtam.ha1994@hotmail.com','0918181003',2,'1234','hathanhtam',1);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `membershiptype`
+-- Table structure for table `orderpublisher`
 --
 
-DROP TABLE IF EXISTS `membershiptype`;
+DROP TABLE IF EXISTS `orderpublisher`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `membershiptype` (
+CREATE TABLE `orderpublisher` (
   `id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `rate` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `quantity` int(11) NOT NULL,
+  `id_bill_publisher` int(11) DEFAULT NULL,
+  `id_clothes` int(11) DEFAULT NULL,
+  `id_deal` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_cwc21yjkwmrcx03b1hgehuorb` (`id_bill_publisher`),
+  KEY `FK_s06gnm5lixxw7c0775nbjai9k` (`id_clothes`),
+  KEY `FK_hltedespfdxoy20q3d9vfdpn6` (`id_deal`),
+  CONSTRAINT `FK_cwc21yjkwmrcx03b1hgehuorb` FOREIGN KEY (`id_bill_publisher`) REFERENCES `billpublisher` (`id`),
+  CONSTRAINT `FK_hltedespfdxoy20q3d9vfdpn6` FOREIGN KEY (`id_deal`) REFERENCES `deal` (`id`),
+  CONSTRAINT `FK_s06gnm5lixxw7c0775nbjai9k` FOREIGN KEY (`id_clothes`) REFERENCES `clothes` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `membershiptype`
+-- Dumping data for table `orderpublisher`
 --
 
-LOCK TABLES `membershiptype` WRITE;
-/*!40000 ALTER TABLE `membershiptype` DISABLE KEYS */;
-/*!40000 ALTER TABLE `membershiptype` ENABLE KEYS */;
+LOCK TABLES `orderpublisher` WRITE;
+/*!40000 ALTER TABLE `orderpublisher` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderpublisher` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -328,7 +340,39 @@ CREATE TABLE `publisher` (
 
 LOCK TABLES `publisher` WRITE;
 /*!40000 ALTER TABLE `publisher` DISABLE KEYS */;
+INSERT INTO `publisher` VALUES (1,'Hà Nội','clothesservice1@hotmail.com','Clothes Service 1','0911111111');
 /*!40000 ALTER TABLE `publisher` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `publisherservice`
+--
+
+DROP TABLE IF EXISTS `publisherservice`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `publisherservice` (
+  `id` int(11) NOT NULL,
+  `description` longtext NOT NULL,
+  `interfaceName` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `targetNamespace` varchar(100) NOT NULL,
+  `urlService` varchar(255) NOT NULL,
+  `id_publisher` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_j5xnnyo841olsatl0ksal8u15` (`id_publisher`),
+  CONSTRAINT `FK_j5xnnyo841olsatl0ksal8u15` FOREIGN KEY (`id_publisher`) REFERENCES `publisher` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `publisherservice`
+--
+
+LOCK TABLES `publisherservice` WRITE;
+/*!40000 ALTER TABLE `publisherservice` DISABLE KEYS */;
+INSERT INTO `publisherservice` VALUES (1,'Danh sách tất cả các mặt hàng','ClothesService1','ClothesService1ImplService','com.clothes1','http://localhost:8001/Clothes1/Clothes-service.html?wsdl',1);
+/*!40000 ALTER TABLE `publisherservice` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -357,38 +401,6 @@ LOCK TABLES `shop` WRITE;
 /*!40000 ALTER TABLE `shop` DISABLE KEYS */;
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `tblorderpublisher`
---
-
-DROP TABLE IF EXISTS `tblorderpublisher`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tblorderpublisher` (
-  `id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `id_bill_publisher` int(11) DEFAULT NULL,
-  `id_clothes` int(11) DEFAULT NULL,
-  `id_deal` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_ekhk44c9p5bslb0ixkg9n8nwi` (`id_bill_publisher`),
-  KEY `FK_ovv2k934pdfde51j28y68xgrm` (`id_clothes`),
-  KEY `FK_c0vxralfbbb82y5whrjr4ejge` (`id_deal`),
-  CONSTRAINT `FK_c0vxralfbbb82y5whrjr4ejge` FOREIGN KEY (`id_deal`) REFERENCES `deal` (`id`),
-  CONSTRAINT `FK_ekhk44c9p5bslb0ixkg9n8nwi` FOREIGN KEY (`id_bill_publisher`) REFERENCES `billpublisher` (`id`),
-  CONSTRAINT `FK_ovv2k934pdfde51j28y68xgrm` FOREIGN KEY (`id_clothes`) REFERENCES `clothes` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tblorderpublisher`
---
-
-LOCK TABLES `tblorderpublisher` WRITE;
-/*!40000 ALTER TABLE `tblorderpublisher` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tblorderpublisher` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -399,5 +411,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-19 13:38:03
+-- Dump completed on 2016-04-17 15:06:15
 GRANT ALL ON clothes.* TO clothes@localhost IDENTIFIED BY '1234';
