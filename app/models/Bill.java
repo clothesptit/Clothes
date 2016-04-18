@@ -5,6 +5,7 @@ import play.db.jpa.GenericModel;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,6 +31,8 @@ public class Bill extends GenericModel implements Serializable {
     public Customer customer;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "bill")
     public List<ClothesOrder> clothesOrderList;
+    @Column(name = "status", length = 100)
+    public String status;
 
     public Bill(Date date, boolean paymentMethod, AddressShipping addressShipping, Customer customer, List<ClothesOrder> clothesOrderList) {
         this.date = date;
@@ -40,11 +43,12 @@ public class Bill extends GenericModel implements Serializable {
     }
 
     public Bill() {
-
+        clothesOrderList = new ArrayList<ClothesOrder>();
+        status = "Đang chờ xác nhận";
     }
 
     public String displayDate() {
-        String pattern = "hh:mm:ss dd/MM/YYYY";
+        String pattern = "yyyy-MM-dd hh:mm:ss.S";
         SimpleDateFormat format = new SimpleDateFormat(pattern);
         return format.format(date).toString();
     }
