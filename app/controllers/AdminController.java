@@ -141,17 +141,17 @@ public class AdminController extends Controller {
         redirect("../../List-clothes.html");
     }
 
-    public static void saveClothes(int[] idCheck, float[] price, int[] sale, float[] voucher, String[] timeStart, String[] timeStop) throws ParseException {
+    public static void saveClothes(int[] idCheck) throws ParseException {
         Clothes clothes = null;
         Deal deal = null;
         Date start = null;
         Date stop = null;
         for (int i = 0; i < idCheck.length; i++) {
             clothes = Clothes.findById(idCheck[i]);
-            clothes.price = price[i];
+            clothes.price = Float.parseFloat(params.get("price" + idCheck[i]));
             deal = clothes.deal;
-            start = sdf.parse(timeStart[i]);
-            stop = sdf.parse(timeStop[i]);
+            start = sdf.parse(params.get("timeStart" + idCheck[i]));
+            stop = sdf.parse(params.get("timeStop" + idCheck[i]));
             if (deal.id == 0) {
                 deal = new Deal();
                 int idDeal = 0;
@@ -162,13 +162,13 @@ public class AdminController extends Controller {
                 deal.id = idDeal;
                 deal.timeStart = start;
                 deal.timeStop = stop;
-                deal.voucher = voucher[i];
-                deal.sale = sale[i];
+                deal.voucher = Float.parseFloat(params.get("voucher" + idCheck[i]));
+                deal.sale = Integer.parseInt(params.get("sale" + idCheck[i]));
             } else {
                 deal.timeStart = start;
                 deal.timeStop = stop;
-                deal.voucher = voucher[i];
-                deal.sale = sale[i];
+                deal.voucher = Float.parseFloat(params.get("voucher" + idCheck[i]));
+                deal.sale = Integer.parseInt(params.get("sale" + idCheck[i]));
             }
             deal.save();
             clothes.deal = deal;

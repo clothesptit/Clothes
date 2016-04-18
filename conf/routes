@@ -1,5 +1,6 @@
 # Clothes
 GET         /Clothes/Homepage.html                       ClothesController.homepage
+GET         /Clothes/View-clothes.html                   ClothesController.viewClothes
 
 # Customer
 GET         /Customer/Register-form.html                 CustomerController.registerForm
