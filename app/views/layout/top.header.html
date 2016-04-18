@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+#{script 'jquery.js'/}
+#{script 'bootstrap.js'/}
+#{script 'bootstrap.min.js'/}
+#{script 'npm.js'/}
+#{stylesheet 'bootstrap.min.css'/}
+#{stylesheet 'bootstrap.css'/}
+#{stylesheet 'bootstrap-theme.css'/}
+#{stylesheet 'bootstrap-theme.min.css'/}
+#{stylesheet 'style.css'/}
+#{stylesheet 'style4.css'/}
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div class="head">
+            <div class=" logo">
+                <a href="${config.Configuration.BASE_URL}Clothes/Homepage.html"><img src="@{'/public/images/logo3.png'}" class="img-responsive" alt=""/></a>
+            </div>
+        </div>
+    </div>
+    <div class="header-top">
+        <div class="container">
+            <div class="col-sm-5 col-md-offset-2  header-login">
+                <div id="search">
+                    <form>
+                        <input id="search" type="text"/>
+                        <input id="submit" type="submit" value="Tìm kiếm"/>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-sm-5 header-social">
+                <ul>
+                    <li><a href="#"><i></i></a></li>
+                    <li><a href="#"><i class="ic1"></i></a></li>
+                    <li><a href="#"><i class="ic2"></i></a></li>
+                    <li><a href="#"><i class="ic3"></i></a></li>
+                    <li><a href="#"><i class="ic4"></i></a></li>
+                </ul>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="head-top">
+
+            <div class="col-sm-8 col-md-offset-2 h_menu4">
+                <nav class="navbar nav_bottom" role="navigation">
+
+                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                        <ul class="nav navbar-nav nav_1">
+                            <li><a class="color" href="${config.Configuration.BASE_URL}Clothes/Homepage.html">Trang chủ</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav nav_1">
+                            <li><a class="color" href="../Customer/Login-form.html">Đăng nhập</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav nav_1">
+                            <li><a class="color" href="../Customer/Register-form.html">Đăng ký</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav nav_1">
+                            <li><a class="color" href="index.html">Khuyến mại</a></li>
+                        </ul>
+
+                    </div>
+
+
+                </nav>
+            </div>
+        </div>
+    *{cart- swith}*
+        <div class="col-sm-2 search-right">
+
+            <div class="cart box_1">
+                <a href="checkout.html">
+                    <h3>
+                        <div class="total">
+                            <span class="simpleCart_total"></span></div>
+                        <a href="index.html"><img src="@{'/public/images/cart.png'}" class="img-responsive" alt=""/></a>
+                    </h3>
+                </a>
+                <p><a href="javascript:;" class="simpleCart_empty">Giỏ hàng</a></p>
+
+            </div>
+            <div class="clearfix">
+            </div>
+        *{end- cart swith}*
+        </div>
+    </div>
+</div>
+</body>
+</html>

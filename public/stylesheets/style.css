@@ -3,6 +3,102 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+/*search form*/
+.form-wrapper {
+	width: 450px;
+	padding: 8px;
+	margin: 100px auto;
+	overflow: hidden;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #dedede #bababa #aaa #bababa;
+	-moz-box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
+	-webkit-box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
+	box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background-color: #f6f6f6;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#eae8e8));
+	background-image: -webkit-linear-gradient(top, #f6f6f6, #eae8e8);
+	background-image: -moz-linear-gradient(top, #f6f6f6, #eae8e8);
+	background-image: -ms-linear-gradient(top, #f6f6f6, #eae8e8);
+	background-image: -o-linear-gradient(top, #f6f6f6, #eae8e8);
+	background-image: linear-gradient(top, #f6f6f6, #eae8e8);}
+
+.form-wrapper #search {
+	width: 330px;
+	height: 20px;
+	padding: 10px 5px;
+	float: left;
+	font: bold 16px 'lucida sans', 'trebuchet MS', 'Tahoma';
+	border: 1px solid #ccc;
+	-moz-box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #fff;
+	-webkit-box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #fff;
+	box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #fff;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;}
+
+.form-wrapper #search:focus {
+	outline: 0;
+	border-color: #aaa;
+	-moz-box-shadow: 0 1px 1px #bbb inset;
+	-webkit-box-shadow: 0 1px 1px #bbb inset;
+	box-shadow: 0 1px 1px #bbb inset;}
+
+.form-wrapper #search::-webkit-input-placeholder {
+	color: #999;
+	font-weight: normal;}
+
+.form-wrapper #search:-moz-placeholder {
+	color: #999;
+	font-weight: normal;}
+
+.form-wrapper #search:-ms-input-placeholder {
+	color: #999;
+	font-weight: normal;}
+
+.form-wrapper #submit {
+	float: right;
+	border: 1px solid #00748f;
+	height: 42px;
+	width: 100px;
+	padding: 0;
+	cursor: pointer;
+	font: bold 15px Arial, Helvetica;
+	color: #fafafa;
+	text-transform: uppercase;
+	background-color: #0483a0;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#31b2c3), to(#0483a0));
+	background-image: -webkit-linear-gradient(top, #31b2c3, #0483a0);
+	background-image: -moz-linear-gradient(top, #31b2c3, #0483a0);
+	background-image: -ms-linear-gradient(top, #31b2c3, #0483a0);
+	background-image: -o-linear-gradient(top, #31b2c3, #0483a0);
+	background-image: linear-gradient(top, #31b2c3, #0483a0);
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	text-shadow: 0 1px 0 rgba(0, 0 ,0, .3);
+	-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;}
+.form-wrapper #submit:hover, .form-wrapper #submit:focus {
+	background-color: #31b2c3;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#0483a0), to(#31b2c3));
+	background-image: -webkit-linear-gradient(top, #0483a0, #31b2c3);
+	background-image: -moz-linear-gradient(top, #0483a0, #31b2c3);
+	background-image: -ms-linear-gradient(top, #0483a0, #31b2c3);
+	background-image: -o-linear-gradient(top, #0483a0, #31b2c3);
+	background-image: linear-gradient(top, #0483a0, #31b2c3);}
+.form-wrapper #submit:active {
+	outline: 0;
+	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;}
+.form-wrapper #submit::-moz-focus-inner {
+	border: 0;}
+/*end search form*/
 @font-face {
     font-family: 'Oxygen-Bold';
     src:url(../fonts/Oxygen-Bold.ttf) format('truetype');
@@ -21,7 +117,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 }
 html,body{
 	background:#fff;
-	font-size: 100%;
+	font-size: 110%;
 	font-family:'Oxygen-Regular';
 	 
 }
@@ -46,13 +142,13 @@ h1,h2,h3,h4,h5,h6,label,p{
 
 }
 .logo .img-responsive {
-	width: 83% !important;
+	width: 100% !important;
 }
 .logo {
 	left: -100px;
 	position: absolute;
 	text-align: center;
-	top: 58px;
+	padding-top: 78px;
 }
 .header-social{
 	text-align: right;
@@ -125,7 +221,8 @@ ul.nav_1 li {
 	
 }
 div#bs-megadropdown-tabs {
-    padding: 0;
+    padding:30px;
+	margin-left: 150px;
 }
 .h_menu4 {
     margin-left: 13.6%;
@@ -198,7 +295,7 @@ a.item_add {
 	margin-left: 5px;
 }
 .box_1 p a{
-  color: #B5B3B3;
+  color:#FA8072;
   font-size: 0.77em;
 }
 .total {
@@ -206,7 +303,9 @@ a.item_add {
 }
 .cart.box_1{
 	float: right;
-	margin-top: 2px;
+	margin-top: 0px;
+	font-size: 35px;
+
 }
 
 .heart{
@@ -607,10 +706,10 @@ a.buy-now:hover{
 .banner-top{
 	text-align:center;
 	width: 100%;
-    height: 250px;
+    height: 450px;
     display: block;
     background: url(../images/back.jpg)no-repeat ;
-	padding:5em 0;
+	padding:10em 0;
 }
 .banner-top h1{
 	font-size:3em;
@@ -921,6 +1020,25 @@ span.actual {
    color: #fff;
    padding: 0.5em 1em;
    font-size:1em;
+}
+.hvr-skew-backward_dk {
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+	-webkit-transform-origin: 0 100%;
+	transform-origin: 0 100%;
+	background-color: #1C86EE;
+	color: #fff;
+	padding: 0.5em 1em;
+	font-size:1em;
 }
 .hvr-skew-backward:hover, .hvr-skew-backward:focus, .hvr-skew-backward:active {
 	-webkit-transform: skew(10deg);
@@ -1470,7 +1588,7 @@ ul.tag-in li a:hover{
 /*--typo--*/
 .page-header h3{
 	font-size: 3em;
-	color:#000;
+	color:#ff6666;
 	font-family: 'Ubuntu-Regular';
 }
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {

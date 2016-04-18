@@ -2500,10 +2500,11 @@ legend {
   width: 100%;
   padding: 0;
   margin-bottom: 20px;
-  font-size: 21px;
+  font-size: 30px;
   line-height: inherit;
-  color: #333;
+  color: #FF4040;
   border: 0;
+  text-align: center;
   border-bottom: 1px solid #e5e5e5;
 }
 label {
@@ -4168,7 +4169,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar {
   position: relative;
-  min-height: 50px;
+  min-height: 150px;
   margin-bottom: 20px;
   border: 1px solid transparent;
 }
