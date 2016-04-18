@@ -16,4 +16,9 @@ public class ClothesController extends Controller {
         render("clothes/homepage.html");
     }
 
+    public static void viewClothes(int id) {
+        Clothes clothes = Clothes.findById(id);
+        renderArgs.put("clothes", clothes);
+        render("clothes/view.clothes.html");
+    }
 }

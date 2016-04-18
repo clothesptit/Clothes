@@ -54,7 +54,7 @@
                 <td>${clothes.size}</td>
                 <td>${clothes.material}</td>
                 <td><input type="text"
-                           name="price"
+                           name="price${clothes.id}"
                            value="${clothes.price}"
                            onchange="onChangeSale('${index}')"
                            id="price${index}" placeholder="Price" size="5"></td>
@@ -72,16 +72,16 @@
                            value="${clothes.deal.sale}"
                            id="sale${index}"
                            onchange="onChangeSale('${index}')"
-                           name="sale"
+                           name="sale${clothes.id}"
                            placeholder="Sale"
                            size="1"></td>
-                <td><input type="text" name="voucher"
+                <td><input type="text" name="voucher${clothes.id}"
                            value="${clothes.deal.voucher}" placeholder="Voucher" size="3">
                 </td>
-                <td><input type="text" name="timeStart"
+                <td><input type="text" name="timeStart${clothes.id}"
                            value="${clothes.deal.timeStart}" placeholder="Time Start"
                            size="7"></td>
-                <td><input type="text" name="timeStop"
+                <td><input type="text" name="timeStop${clothes.id}"
                            value="${clothes.deal.timeStop}" placeholder="Time Stop"
                            size="7"></td>
                 <td><input type="checkbox" name="idCheck" value="${clothes.id}"></td>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xem sản phẩm</title>
+</head>
+<body>
+${clothes.title}<br>
+<img src="${clothes.image}" width="100px">
+Bán bởi: ${clothes.publisher.name}<br>
+Giá bán: ${clothes.price}<br>
+Khuyến mại:<br>
+#{set currentTime:new Date().getTime().asdate('yyyy-MM-dd hh:mm:ss.S').toString()/}
+#{if currentTime>clothes.deal.timeStart.toString() && currentTime<clothes.deal.timeStop.toString()}
+    #{if clothes.deal.sale>0}
+    Giảm giá ${clothes.deal.sale}% chỉ còn ${clothes.price * (100 - clothes.deal.sale) / 100}<br>
+    #{/if}
+    #{if clothes.deal.voucher>0}
+    Tặng Voucher trị giá ${clothes.deal.voucher}<br>
+    #{/if}
+Thời gian kết thúc khuyến mại: ${clothes.deal.timeStop.toString()}
+#{/if}
+#{else }
+Không có chương trình khuyến mại.
+#{/else}
+<br>
+Size: ${clothes.size}<br>
+Màu sắc: ${clothes.color}<br>
+Chất liệu: ${clothes.material}<br>
+Loại: ${clothes.type}<br>
+#{if clothes.quantity>0}
+còn hàng
+#{/if}
+#{else}
+hết hàng
+#{/else}
+<br>
+Mô tả sản phẩm: <br>
+${clothes.description}
+</body>
+</html>
