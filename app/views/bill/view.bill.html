@@ -5,7 +5,7 @@
     <title>Xem thông tin đơn hàng</title>
 </head>
 <body>
-#{list items:bills.clothesOrderList,as:'clothesOrder'}
+#{list items:bill.clothesOrderList,as:'clothesOrder'}
     #{set clothes:clothesOrder.clothes/}
 <img src="${clothes.image}" width="100px">
 ${clothes.title}
@@ -13,7 +13,7 @@ ${clothes.type}
 ${clothes.size}
 ${clothes.material}
 ${clothes.price}
-${clothesOrderList.quantity}
+${clothesOrder.quantity}
 ${clothes.color}
 ${clothes.publisher.name}
 Khuyến mại:<br>

@@ -12,12 +12,12 @@
 *{Khuyến mại:<br>}*
 *{#{set currentTime:new Date().getTime().asdate('yyyy-MM-dd hh:mm:ss.S').toString()/}}*
 *{#{if currentTime>clothes.deal.timeStart.toString() && currentTime<clothes.deal.timeStop.toString()}}*
-    *{#{if clothes.deal.sale>0}}*
-    *{Giảm giá ${clothes.deal.sale}% chỉ còn ${clothes.price * (100 - clothes.deal.sale) / 100}<br>}*
-    *{#{/if}}*
-    *{#{if clothes.deal.voucher>0}}*
-    *{Tặng Voucher trị giá ${clothes.deal.voucher}<br>}*
-    *{#{/if}}*
+*{#{if clothes.deal.sale>0}}*
+*{Giảm giá ${clothes.deal.sale}% chỉ còn ${clothes.price * (100 - clothes.deal.sale) / 100}<br>}*
+*{#{/if}}*
+*{#{if clothes.deal.voucher>0}}*
+*{Tặng Voucher trị giá ${clothes.deal.voucher}<br>}*
+*{#{/if}}*
 *{Thời gian kết thúc khuyến mại: ${clothes.deal.timeStop.toString()}}*
 *{#{/if}}*
 *{#{else }}*
@@ -37,7 +37,7 @@
 *{<br>}*
 *{Mô tả sản phẩm: <br>}*
 *{${clothes.description}}*
-#{stylesheet 'jstarbox.css'/}
+
 <body>
 <!--header-->
 #{include 'layout/top.header.html'/}
@@ -62,7 +62,7 @@
             <div class="col-md-4 grid">
                 <div class="flexslider">
                     <ul class="slides">
-                        <li >
+                        <li>
                             <img src="${clothes.image}">
                         </li>
                     </ul>
@@ -82,7 +82,8 @@
                     #{set currentTime:new Date().getTime().asdate('yyyy-MM-dd hh:mm:ss.S').toString()/}
                     #{if currentTime>clothes.deal.timeStart.toString() && currentTime<clothes.deal.timeStop.toString()}
                         #{if clothes.deal.sale>0}
-                            Giảm giá ${clothes.deal.sale}% chỉ còn ${clothes.price * (100 - clothes.deal.sale) / 100}<br>
+                            Giảm giá ${clothes.deal.sale}% chỉ còn ${clothes.price * (100 - clothes.deal.sale) / 100}
+                            <br>
                         #{/if}
                         #{if clothes.deal.voucher>0}
                             Tặng Voucher trị giá ${clothes.deal.voucher}<br>
@@ -107,9 +108,11 @@
                     ${clothes.description}</p>
                     <div class="wish-list">
                         <ul>
-                            <li class="wish"><a href="#" type="float: none">
-                                <img src="@{'/public/images/tick1.png'}" class="img-responsive" alt=""/></span>Thêm vào giỏ hàng</a></li>
-                            <li class="compare"><a href="#"><span class="glyphicon glyphicon-resize-horizontal" aria-hidden="true">Yêu thích</span></a></li>
+                            <li class="wish"><a href="../Bill/Add-to-bill.html" type="float: none">
+                                <img src="@{'/public/images/tick1.png'}" class="img-responsive" alt=""/>
+                                </span>Thêm vào giỏ hàng</a></li>
+                            <li class="compare"><a href="#"><span class="glyphicon glyphicon-resize-horizontal"
+                                                                  aria-hidden="true">Yêu thích</span></a></li>
                         </ul>
                     </div>
                     <div class="quantity">
@@ -119,11 +122,13 @@
                             <div class="entry value-plus active">&nbsp;</div>
                         </div>
                     </div>
-
-
+                </div>
+                <!--end single-->
+            </div>
+        </div>
+    </div>
+</div>
 <!--end single-->
-
-
 
 </body>
 
