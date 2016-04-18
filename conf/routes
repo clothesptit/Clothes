@@ -11,6 +11,10 @@ GET         /Customer/View-info.html                     CustomerController.view
 
 # Bill
 GET         /Bill/Confirm-bill.html                      BillController.confirmBill
+GET         /Bill/View-bill.html                         BillController.viewBill
+GET         /Bill/View-all-bill.html                     BillController.viewAllBill
+POST        /Bill/Add-to-bill.html                       BillController.addToBill
+GET         /Bill/Delete-from-bill.html                  BillController.deleteFromBill
 
 # Employee
 GET         /Employee/Login-form.html                    EmployeeController.loginForm

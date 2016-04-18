@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xem thông tin đơn hàng</title>
+</head>
+<body>
+#{list items:bills.clothesOrderList,as:'clothesOrder'}
+    #{set clothes:clothesOrder.clothes/}
+<img src="${clothes.image}" width="100px">
+${clothes.title}
+${clothes.type}
+${clothes.size}
+${clothes.material}
+${clothes.price}
+${clothesOrderList.quantity}
+${clothes.color}
+${clothes.publisher.name}
+Khuyến mại:<br>
+    #{set currentTime:new Date().getTime().asdate('yyyy-MM-dd hh:mm:ss.S').toString()/}
+    #{if currentTime>clothes.deal.timeStart.toString() && currentTime<clothes.deal.timeStop.toString()}
+        #{if clothes.deal.sale>0}
+        Giảm giá ${clothes.deal.sale}% chỉ còn ${clothes.price * (100 - clothes.deal.sale) / 100}<br>
+        #{/if}
+        #{if clothes.deal.voucher>0}
+        Tặng Voucher trị giá ${clothes.deal.voucher}<br>
+        #{/if}
+    Thời gian kết thúc khuyến mại: ${clothes.deal.timeStop.toString()}
+    #{/if}
+    #{else}
+    Không có chương trình khuyến mại.
+    #{/else}
+<a href="Delete-from-bill.html?id=${clothes.id}">Xóa</a>
+#{/list}
+Thông tin giao hàng:
+<form>
+    Số nhà: <input type="text" name="num">
+    Đường: <input type="text" name="ward">
+    Quận/Huyện: <input type="text" name="district">
+    Tỉnh thành: <input type="text" name="city">
+    <input type="submit" value="Mua hàng">
+</form>
+</body>
+</html>
