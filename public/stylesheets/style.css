@@ -117,7 +117,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 }
 html,body{
 	background:#fff;
-	font-size: 110%;
+	font-size: 105%;
 	font-family:'Oxygen-Regular';
 	 
 }
@@ -712,6 +712,18 @@ a.buy-now:hover{
     background: url(../images/back.jpg)no-repeat ;
 	padding:10em 0;
 }
+.glyphicon-check::before {
+	content: "";
+}
+.glyphicon {
+	display: inline-block;
+	font-family: "Glyphicons Halflings";
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	position: relative;
+	top: 1px;
+}
 .banner-top h1{
 	font-size:3em;
 	color:#fff;
@@ -889,7 +901,7 @@ ul.kid-menu li,ul.cute li{
     font-family: 'Ubuntu-Bold';
 }
 p.in-para{
-color: #B3B3B3;
+    color:#363636;
     font-size: 0.9em;
     line-height: 2em;
     margin: 1em 0 ;
@@ -921,7 +933,7 @@ h4.quick {
 	margin-top: 1em;
 }
 p.quick_desc {
-	color:#B3B3B3;
+	color:#F67777;
 	font-size:0.9em;
 	line-height: 2em;
 	margin: 1em 0 2em;
