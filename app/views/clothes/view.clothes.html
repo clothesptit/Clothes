@@ -106,22 +106,49 @@
                         <br>
                         Mô tả sản phẩm: <br>
                     ${clothes.description}</p>
-                    <div class="wish-list">
-                        <ul>
-                            <li class="wish"><a href="../Bill/Add-to-bill.html" type="float: none">
-                                <img src="@{'/public/images/tick1.png'}" class="img-responsive" alt=""/>
-                                </span>Thêm vào giỏ hàng</a></li>
-                            <li class="compare"><a href="#"><span class="glyphicon glyphicon-resize-horizontal"
-                                                                  aria-hidden="true">Yêu thích</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="quantity">
-                        <div class="quantity-select">
-                            <div class="entry value-minus">&nbsp;</div>
-                            <div class="entry value"><span>1</span></div>
-                            <div class="entry value-plus active">&nbsp;</div>
+                    <form id="frmAddToBill" action="../Bill/Add-to-bill.html" method="post">
+                        <div class="wish-list">
+                            <ul>
+                                <li class="wish"><a href="javascript:addToBillSubmit()" type="float: none">
+                                    <img src="@{'/public/images/tick1.png'}" class="img-responsive" alt=""/>
+                                    </span>Thêm vào giỏ hàng</a></li>
+                                <li class="compare"><a href="#"><span class="glyphicon glyphicon-resize-horizontal"
+                                                                      aria-hidden="true">Yêu thích</span></a></li>
+                            </ul>
                         </div>
-                    </div>
+                        <div class="quantity">
+                            <div class="quantity-select">
+                                <div id="minus" class="entry value-minus">&nbsp;</div>
+                                <div class="entry value">
+                                    <span id="spanQuantity">1</span>
+                                    <input type="hidden" id="quantity" name="quantity" value="1"/>
+                                    <input type="hidden" name="id" value="${clothes.id}">
+                                </div>
+                                <div id="plus" class="entry value-plus active">&nbsp;</div>
+                            </div>
+                            <script>
+                                $("#minus").click(function () {
+                                    var quantity = parseInt($("#quantity").val());
+                                    if (quantity >= 2) {
+                                        quantity = quantity - 1;
+                                    }
+                                    $("#quantity").val(quantity);
+                                    $("#spanQuantity").html(quantity);
+                                })
+                                $("#plus").click(function () {
+                                    var quantity = parseInt($("#quantity").val());
+                                    quantity = quantity + 1;
+                                    $("#quantity").val(quantity);
+                                    $("#spanQuantity").html(quantity);
+                                })
+                            </script>
+                        </div>
+                    </form>
+                    <script>
+                        function addToBillSubmit() {
+                            $("#frmAddToBill").submit();
+                        }
+                    </script>
                 </div>
                 <!--end single-->
             </div>
