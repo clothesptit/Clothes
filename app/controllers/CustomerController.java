@@ -19,7 +19,7 @@ public class CustomerController extends Controller {
         }
     }
 
-    @Before(only = {"loginForm", "login"})
+    @Before(only = {"registerForm", "register", "loginForm", "login"})
     static void checkAuthentification() {
         Customer customer = (Customer) Cache.get(session.get("username"));
         if (customer != null) {
