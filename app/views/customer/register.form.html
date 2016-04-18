@@ -3,34 +3,435 @@
 <head>
     <meta charset="UTF-8">
     <title>Trang đăng ký</title>
+#{script 'jquery.js'/}
+#{script 'bootstrap.js'/}
+#{script 'bootstrap.min.js'/}
+#{script 'npm.js'/}
+#{stylesheet 'bootstrap.min.css'/}
+#{stylesheet 'bootstrap.css'/}
+#{stylesheet 'bootstrap-theme.css'/}
+#{stylesheet 'bootstrap-theme.min.css'/}
+#{stylesheet 'style.css'/}
+#{stylesheet 'style4.css'/}
+
+<!---//End-rate---->
 </head>
 <body>
-<h1>Đăng ký</h1>
-<form action="Register.html" method="post">
-    <input type="text" name="username" size="20" placeholder="Username">
-    <br>
-    <input type="password" name="pwd" size="20" placeholder="Password">
-    <br>
-    <input type="text" name="fullName" size="20" placeholder="Fullname">
-    <br>
-    <input type="text" name="email" size="20" placeholder="Email">
-    <br>
-    <input type="text" name="phone" size="20" placeholder="Phone">
-    <br>
-    <input type="text" name="address" size="40" placeholder="Address">
-    <br>
-    <input type="radio" name="name" value="BIDV" onmousemove="window.status='BIDV';">BIDV
-    <input type="radio" name="name" value="Agribank" onmousemove="window.status='Agribank';">Agribank
-    <input type="radio" name="name" value="Techcombank" onmousemove="window.status='techcombak';">Techcombank
-    <br>
-    <input type="radio" name="cardType" value="Master" onmousemove="window.status='Master';">Master
-    <input type="radio" name="cardType" value="Visa" onmousemove="window.status='Visa';">Visa
-    <br>
-    <input type="text" name="cardNumber" size="20" placeholder="Card number">
-    <br>
-    <input type="submit" value="Đăng ký">
-    <br>
-    <input type="button" value="Đăng nhập" onclick="window.location='Login-form.html'">
-</form>
+<!--header-->
+<div class="header">
+    <div class="container">
+        <div class="head">
+            <div class=" logo">
+                <a href="index.html"> <img src="@{'/public/images/logo3.png'}"/></a>
+            </div>
+        </div>
+    </div>
+    <div class="header-top">
+        <div class="container">
+            <div class="col-sm-5 col-md-offset-2  header-login">
+                <ul >
+                    <li><a href="login.html">Đăng nhập</a></li>
+                    <li><a href="register.html">Đăng ký</a></li>
+                    <li><a href="checkout.html">Đăng xuất</a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm-5 header-social">
+                <ul >
+                    <li><a href="#"><i></i></a></li>
+                    <li><a href="#"><i class="ic1"></i></a></li>
+                    <li><a href="#"><i class="ic2"></i></a></li>
+                    <li><a href="#"><i class="ic3"></i></a></li>
+                    <li><a href="#"><i class="ic4"></i></a></li>
+                </ul>
+
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="head-top">
+
+            <div class="col-sm-8 col-md-offset-2 h_menu4">
+                <nav class="navbar nav_bottom" role="navigation">
+
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header nav_2">
+                        <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                        <ul class="nav navbar-nav nav_1">
+                            <li><a class="color" href="index.html">Trang chủ</a></li>
+
+                            <li class="dropdown mega-dropdown active">
+                                <a class="color1" href="#" class="dropdown-toggle" data-toggle="dropdown">Nữ<span class="caret"></span></a>
+                                <div class="dropdown-menu ">
+                                    <div class="menu-top">
+                                        <div class="col1">
+                                            <div class="h_nav">
+                                                <h4>Submenu1</h4>
+                                                <ul>
+                                                    <li><a href="product.html">Accessories</a></li>
+                                                    <li><a href="product.html">Bags</a></li>
+                                                    <li><a href="product.html">Caps & Hats</a></li>
+                                                    <li><a href="product.html">Hoodies & Sweatshirts</a></li>
+
+                                                </ul>
+                                            </div>
+                                            <h4>Submenu2</h4>
+                                            <ul>
+                                        </div>
+                                        <div class="col1">
+                                            <div class="h_nav">
+                            <li><a href="product.html">Jackets & Coats</a></li>
+                            <li><a href="product.html">Jeans</a></li>
+                            <li><a href="product.html">Jewellery</a></li>
+                            <li><a href="product.html">Jumpers & Cardigans</a></li>
+                            <li><a href="product.html">Leather Jackets</a></li>
+                            <li><a href="product.html">Long Sleeve T-Shirts</a></li>
+                        </ul>
+                    </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Submenu3</h4>
+                    <ul>
+                        <li><a href="product.html">Shirts</a></li>
+                        <li><a href="product.html">Shoes, Boots & Trainers</a></li>
+                        <li><a href="product.html">Sunglasses</a></li>
+                        <li><a href="product.html">Sweatpants</a></li>
+                        <li><a href="product.html">Swimwear</a></li>
+                        <li><a href="product.html">Trousers & Chinos</a></li>
+
+                    </ul>
+
+                </div>
+            </div>
+            <div class="col1">
+                <div class="h_nav">
+                    <h4>Submenu4</h4>
+                    <ul>
+                        <li><a href="product.html">T-Shirts</a></li>
+                        <li><a href="product.html">Underwear & Socks</a></li>
+                        <li><a href="product.html">Vests</a></li>
+                        <li><a href="product.html">Jackets & Coats</a></li>
+                        <li><a href="product.html">Jeans</a></li>
+                        <li><a href="product.html">Jewellery</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col1 col5">
+
+                <img src="@{'/public/images/me.png'}" class="img-responsive" alt=""/>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    </li>
+    <li class="dropdown mega-dropdown active">
+        <a class="color2" href="#" class="dropdown-toggle" data-toggle="dropdown">Nam<span class="caret"></span></a>
+        <div class="dropdown-menu mega-dropdown-menu">
+            <div class="menu-top">
+                <div class="col1">
+                    <div class="h_nav">
+                        <h4>Submenu1</h4>
+                        <ul>
+                            <li><a href="product.html">Accessories</a></li>
+                            <li><a href="product.html">Bags</a></li>
+                            <li><a href="product.html">Caps & Hats</a></li>
+                            <li><a href="product.html">Hoodies & Sweatshirts</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col1">
+                    <div class="h_nav">
+                        <h4>Submenu2</h4>
+                        <ul>
+                            <li><a href="product.html">Jackets & Coats</a></li>
+                            <li><a href="product.html">Jeans</a></li>
+                            <li><a href="product.html">Jewellery</a></li>
+                            <li><a href="product.html">Jumpers & Cardigans</a></li>
+                            <li><a href="product.html">Leather Jackets</a></li>
+                            <li><a href="product.html">Long Sleeve T-Shirts</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col1">
+                    <div class="h_nav">
+                        <h4>Submenu3</h4>
+
+                        <ul>
+                            <li><a href="product.html">Shirts</a></li>
+                            <li><a href="product.html">Shoes, Boots & Trainers</a></li>
+                            <li><a href="product.html">Sunglasses</a></li>
+                            <li><a href="product.html">Sweatpants</a></li>
+                            <li><a href="product.html">Swimwear</a></li>
+                            <li><a href="product.html">Trousers & Chinos</a></li>
+
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col1">
+                    <div class="h_nav">
+                        <h4>Submenu4</h4>
+                        <ul>
+                            <li><a href="product.html">T-Shirts</a></li>
+                            <li><a href="product.html">Underwear & Socks</a></li>
+                            <li><a href="product.html">Vests</a></li>
+                            <li><a href="product.html">Jackets & Coats</a></li>
+                            <li><a href="product.html">Jeans</a></li>
+                            <li><a href="product.html">Jewellery</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col1 col5">
+                    <img src="@{'/public/images/me1.png'}" class="img-responsive" alt=""/>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </li>
+    <li><a class="color3" href="product.html">Trẻ em</a></li>
+    <li><a class="color4" href="404.html">Khuyến mại</a></li>
+    <li><a class="color5" href="typo.html">Giao hàng</a></li>
+    <li ><a class="color6" href="contact.html">Liên hệ</a></li>
+    </ul>
+</div><!-- /.navbar-collapse -->
+
+</nav>
+</div>
+<div class="col-sm-2 search-right">
+    <ul class="heart">
+        <li>
+            <a href="wishlist.html" >
+                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            </a></li>
+        <li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i></a></li>
+    </ul>
+    <div class="cart box_1">
+        <a href="checkout.html">
+            <h3> <div class="total">
+                <span class="simpleCart_total"></span></div>
+
+                <img src="@{'/public/images/cart.png'}" alt=""/> </h3>
+        </a>
+        <p><a href="javascript:;" class="simpleCart_empty">Giỏ hàng</a></p>
+
+    </div>
+    <div class="clearfix"> </div>
+
+    <!----->
+
+    <!---pop-up-box---->
+    <link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
+    <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+    <!---//pop-up-box---->
+    <div id="small-dialog" class="mfp-hide">
+        <div class="search-top">
+            <div class="login-search">
+                <input type="submit" value="">
+                <input type="text" value="Search.." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search..';}">
+            </div>
+            <p>Shopin</p>
+        </div>
+    </div>
+
+</div>
+<div class="clearfix"></div>
+</div>
+</div>
+</div>
+<!--banner-->
+<div class="banner-top">
+    <div class="container">
+        <h1>Đăng nhập</h1>
+        <em></em>
+        <h2><a href="index.html">Trang chủ</a><label>/</label>Đăng nhập</a></h2>
+    </div>
+</div>
+<!--register-->
+<div class="container">
+    <div class="login">
+        <form>
+            <div class="col-md-6 login-do">
+                <div class="login-mail">
+                    <input type="text" placeholder="Username" required="" name="username">
+                    <i  class="glyphicon glyphicon-user"></i>
+                </div>
+                <div class="login-mail">
+                    <input type="password" placeholder="Password" required="" name="pwd">
+                    <i  class="glyphicon glyphicon-user"></i>
+                </div>
+                <div class="login-mail">
+                    <input type="text" placeholder="Fullname" required="" name="fullname">
+                    <i  class="glyphicon glyphicon-phone"></i>
+                </div>
+                <div class="login-mail">
+                    <input type="text" placeholder="Email" required="" name="mail">
+                    <i  class="glyphicon glyphicon-envelope"></i>
+                </div>
+                <div class="login-mail">
+                    <input type="text" placeholder="Phone" required="" name="phone">
+                    <i class="glyphicon glyphicon-lock"></i>
+                </div>
+                <div class="login-mail">
+                    <input type="text" placeholder="Address" required="" name="address">
+                    <i class="glyphicon glyphicon-lock"></i>
+                </div>
+                <div class="login-mail">
+                <input type="radio" name="name" value="BIDV" onmousemove="window.status='BIDV';">BIDV
+                    <i class="glyphicon glyphicon-lock"></i>
+                    </div>
+                <div class="login-mail">
+                    <input type="radio" name="name" value="Techcombank" onmousemove="window.status='techcombak';">Techcombank                    <i class="glyphicon glyphicon-lock"></i>
+                    <i class="glyphicon glyphicon-lock"></i>
+                </div>
+
+                <div class="login-mail">
+                    <input type="radio" name="name" value="Techcombank" onmousemove="window.status='Agribank';">Agribank                    <i class="glyphicon glyphicon-lock"></i>
+                    <i class="glyphicon glyphicon-lock"></i>
+                </div>
+
+                <div class="login-mail">
+                    <input type="radio" name="cardType" value="Master" onmousemove="window.status='Master';">Master
+                    <i class="glyphicon glyphicon-lock"></i>
+                </div>
+
+                <div class="login-mail">
+                    <input type="radio" name="cardType" value="Master" onmousemove="window.status='Visa';">Visa
+                    <i class="glyphicon glyphicon-lock"></i>
+                </div>
+
+                <a class="news-letter " href="#">
+                    <label class="checkbox1"><input type="checkbox" name="checkbox" ><i> </i>Quên mật khẩu</label>
+                </a>
+                <label class="hvr-skew-backward">
+                    <input type="submit" value="Đăng ký">
+                </label>
+
+            </div>
+            <div class="col-md-6 login-right">
+                <h3>Đăng ký tài khoản thành công</h3>
+
+
+                <a href="login.html" class="hvr-skew-backward">Đăng nhập</a>
+
+            </div>
+
+            <div class="clearfix"> </div>
+        </form>
+    </div>
+
+</div>
+
+<!--//register-->
+
+<!--brand-->
+<div class="container">
+    <div class="brand">
+        <div class="col-md-3 brand-grid">
+            <img src="@{'/public/images/ic.png'}" class="img-responsive" alt=""/>
+        </div>
+        <div class="col-md-3 brand-grid">
+            <img src="@{'/public/images/ic1.png'}" class="img-responsive" alt=""/>
+        </div>
+        <div class="col-md-3 brand-grid">
+            <img src="@{'/public/images/ic2.png'}" class="img-responsive" alt=""/>
+        </div>
+        <div class="col-md-3 brand-grid">
+            <img src="@{'/public/images/ic3.png'}" class="" alt=""/>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!--//brand-->
+</div>
+
+</div>
+<!--//content-->
+<!--//footer-->
+<div class="footer">
+    <div class="footer-middle">
+        <div class="container">
+            <div class="col-md-3 footer-middle-in">
+                <a href="index.html">
+                    <img src="@{'/public/images/log1.png'}" alt=""/>
+
+                </a>
+                <p>“Thời trang rất quan trọng, nó khiến cuộc sống này trở nên tốt đẹp hơn. Và cũng giống như những điều tuyệt vời khác, thời trang xứng đáng được bạn đầu tư công sức chăm chút cẩn thận”</p>
+            </div>
+
+            <div class="col-md-3 footer-middle-in">
+                <h6>Thông tin</h6>
+                <ul class=" in">
+                    <li><a href="404.html">Liên hệ</a></li>
+                    <li><a href="contact.html">Quy định</a></li>
+                    <li><a href="contact.html">Bản đồ</a></li>
+                </ul>
+                <ul class="in in1">
+                    <li><a href="#">Lịch sử đặt hàng</a></li>
+                    <li><a href="wishlist.html">Danh sách yêu thích</a></li>
+                    <li><a href="Login.html">Đăng nhập</a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-3 footer-middle-in">
+                <h6>Tags</h6>
+                <ul class="tag-in">
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Sed</a></li>
+                    <li><a href="#">Ipsum</a></li>
+                    <li><a href="#">Contrary</a></li>
+                    <li><a href="#">Chunk</a></li>
+                    <li><a href="#">Amet</a></li>
+                    <li><a href="#">Omnis</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 footer-middle-in">
+                <h6>Hòm thư góp ý</h6>
+                <span>Đăng ký để gửi thư</span>
+                <form>
+                    <input type="text" value="Enter your E-mail" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Enter your E-mail';}">
+                    <input type="submit" value="Subscribe">
+                </form>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <ul class="footer-bottom-top">
+                <li><a href="#">
+                    <img src="@{'/public/images/f1.png'}" class="img-responsive" alt=""/>
+                </a></li>
+                <li><a href="#">
+                    <img src="@{'/public/images/f2.png'}" class="img-responsive" alt=""/>
+                </a></li>
+                <li><a href="#">
+                    <img src="@{'/public/images/f3.png'}" class="img-responsive" alt=""/>
+                </a></li>
+            </ul>
+            <p class="footer-class">&copy; 8/4/2016 clothes shop. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">No name</a> </p>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!--//footer-->
+
+
+
+
+
 </body>
 </html>
