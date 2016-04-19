@@ -35,6 +35,10 @@ GET         /Admin/Search-clothes.html                   AdminController.searchC
 GET         /Admin/Set-deal-/{idCheck}.html              AdminController.setDeal
 POST        /Admin/Save-clothes.html                     AdminController.saveClothes
 GET         /Admin/Delete-clothes.html                   AdminController.deleteClothes
+GET         /Admin/Show-list-bill.html                   AdminController.showListBill
+GET         /Admin/Search-bill-by-status.html            AdminController.searchBillByStatus
+GET         /Admin/View-bill-by-id.html                  AdminController.viewBillById
+POST        /Admin/Save-bill.html                        AdminController.saveBill
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

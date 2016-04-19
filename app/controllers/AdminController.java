@@ -202,4 +202,37 @@ public class AdminController extends Controller {
         renderArgs.put("clothesList", clothesList);
         render("admin/list.clothes.html");
     }
+
+    public static void showListBill() {
+        List<Bill> bills = Bill.findAll();
+        render("admin/list.bill.html", bills);
+    }
+
+    public static void searchBillByStatus(String status) {
+        List<Bill> bills = Bill.find("FROM Bill b WHERE b.status=:status")
+                .setParameter("status", status).fetch();
+        render("admin/list.bill.html", bills);
+    }
+
+    public static void viewBillById(int id) {
+        Bill bill = Bill.findById(id);
+        renderArgs.put("bill", bill);
+        render("bill/view.bill.by.id.html");
+    }
+
+    public static void saveBill(int[] idCheck) {
+        Bill bill;
+        for (int i = 0; i < idCheck.length; i++) {
+            bill = Bill.findById(idCheck[i]);
+            bill.status = params.get("status" + idCheck[i]);
+            if (params.get("status" + idCheck[i]).equals("Hủy đơn hàng")) {
+                Customer customer = Customer.findById(bill.customer.id);
+                customer.point += bill.usePoint;
+                customer.save();
+                Mails.sendCancelOrder(bill);
+            }
+            bill.save();
+        }
+        redirect("../Show-list-bill.html");
+    }
 }
