@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Ha Thanh Tam on 19/03/2016.
  */
 public class BillController extends Controller {
-    @Before
+    @Before(unless = {"saveBill"})
     static void checkNotAuthentification() {
         if (Cache.get(session.get("username")) == null) {
             redirect("../../Customer/Login-form.html");
@@ -57,7 +57,7 @@ public class BillController extends Controller {
 
     public static void viewBill() {
         if (Cache.get("bill" + session.get("username")) == null) {
-            redirect("../Homepage.html");
+            redirect("../../Clothes/Homepage.html");
         }
         Bill bill = (Bill) Cache.get("bill" + session.get("username"));
         renderArgs.put("bill", bill);
@@ -80,9 +80,10 @@ public class BillController extends Controller {
         }
         Bill bill = (Bill) Cache.get("bill" + session.get("username"));
         Calendar cal = Calendar.getInstance();
-        bill.date = cal.getTime();
+        bill.customer = (Customer) Cache.get(session.get("username"));
         bill.addressShipping = new AddressShipping(num, ward, district, city);
         bill.usePoint = usePoint;
+        bill.status = "Đơn hàng đang chờ xác nhận";
         Mails.sendConfirmOrder(bill);
     }
 
@@ -91,16 +92,29 @@ public class BillController extends Controller {
         if (bill == null) {
             redirect("../../Clothes/Homepage.html");
         }
-        Customer customer = (Customer) Cache.get(session.get("username"));
+        Customer customer = bill.customer;
         if (customer.point < bill.usePoint) {
             redirect("../../Clothes/Homepage.html");
         }
+        int idAddressShipping = 0;
+        try {
+            idAddressShipping = (Integer) JPA.em().createQuery("SELECT MAX(a.id) FROM AddressShipping a")
+                    .getSingleResult() + 1;
+        } catch (NullPointerException e) {
+        }
+        AddressShipping addressShipping = bill.addressShipping;
+        addressShipping.id = idAddressShipping;
+        addressShipping.save();
+        bill.addressShipping = addressShipping;
         int idBill = 1;
         try {
-            idBill = (Integer) JPA.em().createQuery("SELECT MAX(b.id) FROM Bill b").getSingleResult() + 1;
+            idBill = (Integer) JPA.em().createQuery("SELECT MAX(b.id) FROM Bill b")
+                    .getSingleResult() + 1;
         } catch (NullPointerException e) {
         }
         bill.id = idBill;
+        bill.addressShipping.save();
+        bill.status = "Đơn hàng đã được xác nhận";
         bill.save();
         Deal deal;
         int idDeal = 0;
@@ -118,8 +132,7 @@ public class BillController extends Controller {
         }
         Cache.delete(token);
         Cache.delete("bill" + session.get("username"));
-        bill.status = "Đơn hàng đã được xác nhận";
-        Mails.sendStatusOrder(customer, bill);
+        Mails.sendStatusOrder(bill);
         redirect("../View-bill.html?id=" + idBill);
     }
 
