@@ -230,6 +230,8 @@ public class AdminController extends Controller {
                 customer.point += bill.usePoint;
                 customer.save();
                 Mails.sendCancelOrder(bill);
+            } else {
+                Mails.sendStatusOrder(bill);
             }
             bill.save();
         }

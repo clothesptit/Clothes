@@ -7,6 +7,7 @@ GET         /Customer/Register-form.html                 CustomerController.regi
 POST        /Customer/Register.html                      CustomerController.register
 GET         /Customer/Login-form.html                    CustomerController.loginForm
 POST        /Customer/Login.html                         CustomerController.login
+GET         /Customer/Logout.html                        CustomerController.logout
 GET         /Customer/View-info.html                     CustomerController.viewInfo
 
 # Bill
