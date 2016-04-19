@@ -67,7 +67,7 @@ public class BillController extends Controller {
 
     public static void viewBillById(int id) {
         if (id == 0) {
-            redirect("View-bill.html");
+            redirect("../View-bill.html");
         }
         Bill bill = Bill.findById(id);
         Customer customer = (Customer) Cache.get(session.get("username"));
