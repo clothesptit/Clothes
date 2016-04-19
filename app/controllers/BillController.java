@@ -89,6 +89,7 @@ public class BillController extends Controller {
         bill.usePoint = usePoint;
         bill.status = "Đơn hàng đang chờ xác nhận";
         Mails.sendConfirmOrder(bill);
+        redirect("../View-all-bill.html");
     }
 
     public synchronized static void saveBill(String token) {
@@ -129,18 +130,24 @@ public class BillController extends Controller {
             idDeal = (Integer) JPA.em().createQuery("SELECT MAX(d.id) FROM Deal d").getSingleResult() + 1;
         } catch (NullPointerException e) {
         }
+        int idClothesOrder = 0;
+        try {
+            idClothesOrder = (Integer) JPA.em().createQuery("SELECT MAX(c.id) FROM ClothesOrder c").getSingleResult() + 1;
+        } catch (NullPointerException e) {
+        }
         for (int i = 0; i < bill.clothesOrderList.size(); i++) {
             deal = bill.clothesOrderList.get(i).clothes.deal;
             deal.id = idDeal + i;
             bill.clothesOrderList.get(i).deal = deal;
             bill.clothesOrderList.get(i).bill = bill;
             deal.save();
+            bill.clothesOrderList.get(i).id = idClothesOrder + i;
             bill.clothesOrderList.get(i).save();
         }
         Cache.delete(token);
         Cache.delete("bill" + session.get("username"));
         Mails.sendStatusOrder(bill);
-        redirect("../View-bill.html?id=" + idBill);
+        redirect("../View-bill-by-id.html?id=" + idBill);
     }
 
     public static void viewAllBill() {
