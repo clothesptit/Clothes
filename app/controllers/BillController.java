@@ -61,7 +61,7 @@ public class BillController extends Controller {
         }
         Bill bill = (Bill) Cache.get("bill" + session.get("username"));
         renderArgs.put("bill", bill);
-        renderArgs.put("customer", (Customer) Cache.get("bill" + session.get("username")));
+        renderArgs.put("customer", (Customer) Cache.get(session.get("username")));
         render("bill/view.bill.html");
     }
 
