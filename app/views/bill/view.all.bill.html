@@ -7,14 +7,14 @@
 <body>
 #{if bills.size()!=0}
     #{list items:bills, as:'bill'}
-        ${bill.id}
-        ${bill.addressShipping.toString()}
-        ${bill.status}
-        <a href="View-bill-by-id.html?id=${bill.id}"></a>
-    #{/list}}
+    Mã đơn hàng: ${bill.id}
+    Địa chỉ giao hàng: ${bill.addressShipping.toString()}
+    Trạng thái đơn hàng: ${bill.status}
+    <a href="View-bill-by-id.html?id=${bill.id}">Xem đơn hàng</a>
+    #{/list}
 #{/if}
 #{else}
 Bạn không có đơn hàng nào.
-#{/else}}
+#{/else}
 </body>
 </html>

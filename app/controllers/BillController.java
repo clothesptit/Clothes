@@ -67,9 +67,13 @@ public class BillController extends Controller {
 
     public static void viewBillById(int id) {
         if (id == 0) {
-            redirect("View-bill.html");
+            redirect("../View-bill.html");
         }
         Bill bill = Bill.findById(id);
+        Customer customer = (Customer) Cache.get(session.get("username"));
+        if (customer.id != bill.customer.id) {
+            redirect("../../Clothes/Homepage.html");
+        }
         renderArgs.put("bill", bill);
         render("bill/view.bill.by.id.html");
     }
@@ -96,6 +100,8 @@ public class BillController extends Controller {
         if (customer.point < bill.usePoint) {
             redirect("../../Clothes/Homepage.html");
         }
+        customer.point = customer.point - bill.usePoint;
+        customer.save();
         int idAddressShipping = 0;
         try {
             idAddressShipping = (Integer) JPA.em().createQuery("SELECT MAX(a.id) FROM AddressShipping a")
@@ -137,7 +143,9 @@ public class BillController extends Controller {
     }
 
     public static void viewAllBill() {
-        List<Bill> bills = Bill.findAll();
+        Customer customer = (Customer) Cache.get(session.get("username"));
+        List<Bill> bills = Bill.find("FROM Bill b WHERE b.customer.id=:id")
+                .setParameter("id", customer.id).fetch();
         if (Cache.get("bill" + session.get("username")) != null) {
             Bill bill = (Bill) Cache.get("bill" + session.get("username"));
             bill.id = 0;
