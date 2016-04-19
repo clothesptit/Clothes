@@ -1414,8 +1414,16 @@ th, td {
 .text_bill{
 	text-align: center;
 	color: #ff6666;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-top: 40px;
+	padding-bottom: 10px;
+}
+.em {
+	background: #FF6A6A none repeat scroll 0 0;
+	border-radius: 5px;
+	display: block;
+	height: 2px;
+	margin: 0.5em auto;
+	width: 200px;
 }
 td{
 	color:#b2b2b2;
