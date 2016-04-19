@@ -37,8 +37,9 @@ public class Mails extends Mailer {
         Customer customer = bill.customer;
         setSubject("Thông tin đơn hàng của bạn.");
         addRecipient(bill.customer.email);
-        setFrom("Website Bán Quần Áo <demoptit@gmail.com>");
-        send("mails/send.status.bill", bill, customer);
+        String hostName = Play.configuration.getProperty("application.baseUrl");
+        String linkViewBill = hostName + "Bill/View-bill-by-id.html?id=" + bill.id;
+        send("mails/send.status.bill", bill, customer, linkViewBill);
     }
 
     public static void sendCompletedOrder(Customer customer, Bill bill) {
