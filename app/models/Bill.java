@@ -29,7 +29,7 @@ public class Bill extends GenericModel implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_customer")
     public Customer customer;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bill")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "bill")
     public List<ClothesOrder> clothesOrderList;
     @Column(name = "status", length = 100)
     public String status;

@@ -19,8 +19,8 @@ public class ClothesOrder extends GenericModel implements Serializable {
     public Clothes clothes;
     @Column(nullable = false)
     public int quantity;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_bill", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_bill")
     public Bill bill;
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_deal")
