@@ -1,20 +1,79 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
+#{script 'jquery.js'/}
+#{script 'bootstrap.js'/}
+#{script 'bootstrap.min.js'/}
+#{script 'npm.js'/}
+#{stylesheet 'style.css'/}
+
 </head>
 <body>
-<h1>Xin chào ${bill.customer.fullName}</h1><br>
-Thông tin đơn hàng:<br>
-Nơi giao hàng: ${bill.addressShipping.toString()}<br>
-Số điện thoại: ${bill.customer.phone}<br>
-Thời gian đặt mua: ${bill.displayDate()}<br>
-Bạn hãy Click vào Link dưới đây để xác nhận đơn hàng<br>
-<a href="${linkConfirm}">Link xác nhận</a>
-#{list items:bill.clothesOrderList,as:'clothesOrder'}
-<!--
-Làm giống trang view.bill.html nhưng bỏ cột xóa.
--->
-#{/list}
+<div class="container">
+    <div><h1>Xin chào ${bill.customer.fullName}</h1><br>
+        <h3>
+            <mark> Thông tin đơn hàng:</mark>
+        </h3>
+        Nơi giao hàng: ${bill.addressShipping.toString()}<br>
+        Số điện thoại: ${bill.customer.phone}<br>
+        Thời gian đặt mua: ${bill.displayDate()}<br>
+        <em></em>
+        <mark>
+            Bạn hãy Click vào Link dưới đây để xác nhận đơn hàng
+        </mark>
+        <br/>
+        <a href="${linkConfirm}">Link xác nhận</a>
+    </div>
+    <br/>
+    <br/>
+    <div>
+        <table border="2px">
+        #{list items:bill.clothesOrderList,as:'clothesOrder'}
+            #{set clothes:clothesOrder.clothes/}
+            <tr>
+                <th>Hình ảnh</th>
+                <th>Thông tin</th>
+                <th>Total Price</th>
+            </tr>
+            <tr>
+                <td><img src="${clothes.image}" width="70px" height="100px"></td>
+                <td><p>${clothes.title}</p>
+                    <p>${clothes.type}</p>
+                    <p> ${clothes.size}</p>
+                    <p>${clothes.material}</p>
+                    <p>${clothes.price}</p>
+                    <p>${clothesOrder.quantity}</p>
+                    <p>${clothes.color}</p>
+                    <p>${clothes.publisher.name}</p>
+                </td>
+                <td>Tổng tiền:</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <p style="color: #FF4040">Khuyến mại:
+                    <p><br>
+                        #{set currentTime:new Date().getTime().asdate('yyyy-MM-dd hh:mm:ss.S').toString()/}
+                        #{if currentTime>clothes.deal.timeStart.toString() && currentTime<clothes.deal.timeStop.toString()}
+                            #{if clothes.deal.sale>0}
+                                Giảm giá ${clothes.deal.sale}% chỉ
+                                còn ${clothes.price * (100 - clothes.deal.sale) / 100}<br>
+                            #{/if}
+                            #{if clothes.deal.voucher>0}
+                                Tặng Voucher trị giá ${clothes.deal.voucher}<br>
+                            #{/if}
+                            Thời gian kết thúc khuyến mại: ${clothes.deal.timeStop.toString()}
+                        #{/if}
+                        #{else}
+                            Không có chương trình khuyến mại.
+                        #{/else}
+                </td>
+            </tr>
+
+        #{/list}
+        </table>
+    </div>
+</div>
+
 </body>
 </html>
