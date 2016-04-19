@@ -22,9 +22,9 @@
 <!--banner-->
 <div class="banner-top">
     <div class="container">
-        <h1>Đăng nhập</h1>
+        <h1>Đăng ký</h1>
         <em></em>
-        <h2><a href="index.html">Trang chủ</a><label>/</label>Đăng nhập</a></h2>
+        <h2><a href="index.html">Trang chủ</a><label>/</label>Đăng nhập</h2>
     </div>
 </div>
 <!--End banner>
@@ -33,23 +33,27 @@
 <!--register-->
 <div class="container">
     <div class="login">
+        <hr/>
+        <h1 style="color: #FF4040; text-align: center"> Đăng ký</h1>
+        <em class="em"></em>
         <form>
+            <div class="col-md-3"></div>
             <div class="col-md-6 login-do">
                 <div class="login-mail">
                     <input type="text" placeholder="Username" required="" name="username">
-                    <i  class="glyphicon glyphicon-user"></i>
+                    <i class="glyphicon glyphicon-user"></i>
                 </div>
                 <div class="login-mail">
                     <input type="password" placeholder="Password" required="" name="pwd">
-                    <i  class="glyphicon glyphicon-user"></i>
+                    <i class="glyphicon glyphicon-user"></i>
                 </div>
                 <div class="login-mail">
                     <input type="text" placeholder="Fullname" required="" name="fullname">
-                    <i  class="glyphicon glyphicon-phone"></i>
+                    <i class="glyphicon glyphicon-phone"></i>
                 </div>
                 <div class="login-mail">
                     <input type="text" placeholder="Email" required="" name="mail">
-                    <i  class="glyphicon glyphicon-envelope"></i>
+                    <i class="glyphicon glyphicon-envelope"></i>
                 </div>
                 <div class="login-mail">
                     <input type="text" placeholder="Phone" required="" name="phone">
@@ -60,75 +64,39 @@
                     <i class="glyphicon glyphicon-lock"></i>
                 </div>
                 <div class="login-mail">
-                <input type="radio" name="name" value="BIDV" onmousemove="window.status='BIDV';">BIDV
-                    <i class="glyphicon glyphicon-lock"></i>
-                    </div>
-                <div class="login-mail">
-                    <input type="radio" name="name" value="Techcombank" onmousemove="window.status='techcombak';">Techcombank                    <i class="glyphicon glyphicon-lock"></i>
-                    <i class="glyphicon glyphicon-lock"></i>
-                </div>
+                    <input type="radio" style="padding-left: 10px; padding-right: 10px " name="name" value="BIDV"
+                           onmousemove="window.status='BIDV';">BIDV
+                    <input type="radio" style="padding-left: 10px; padding-right:  10px " name="name"
+                           value="Techcombank" onmousemove="window.status='Agribank';">Agribank
+                    <input type="radio" style="padding-left: 10px; padding-right:  10px " name="name"
+                           value="Techcombank" onmousemove="window.status='techcombak';">Techcombank
 
-                <div class="login-mail">
-                    <input type="radio" name="name" value="Techcombank" onmousemove="window.status='Agribank';">Agribank                    <i class="glyphicon glyphicon-lock"></i>
-                    <i class="glyphicon glyphicon-lock"></i>
                 </div>
 
                 <div class="login-mail">
                     <input type="radio" name="cardType" value="Master" onmousemove="window.status='Master';">Master
-                    <i class="glyphicon glyphicon-lock"></i>
+                    <input type="radio" name="cardType" value="Master" onmousemove="window.status='Visa';">Visa
                 </div>
 
-                <div class="login-mail">
-                    <input type="radio" name="cardType" value="Master" onmousemove="window.status='Visa';">Visa
-                    <i class="glyphicon glyphicon-lock"></i>
-                </div>
 
                 <a class="news-letter " href="#">
-                    <label class="checkbox1"><input type="checkbox" name="checkbox" ><i> </i>Quên mật khẩu</label>
+                    <label class="checkbox1"><input type="checkbox" name="checkbox"><i> </i>Quên mật khẩu</label>
                 </a>
                 <label class="hvr-skew-backward">
                     <input type="submit" value="Đăng ký">
                 </label>
-
+                <label class="hvr-skew-backward_dk">
+                    <input href="login.form.html" type="submit" value="Đăng nhập">
+                </label>
             </div>
-            <div class="col-md-6 login-right">
-                <h3>Đăng ký tài khoản thành công</h3>
-
-
-                <a href="login.html" class="hvr-skew-backward">Đăng nhập</a>
-
-            </div>
-
-            <div class="clearfix"> </div>
+            <div class="col-md-3"></div>
+            <div class="clearfix"></div>
         </form>
     </div>
-
+    <hr/>
 </div>
 <!--//register-->
 
-<!--brand-->
-<div class="container">
-    <div class="brand">
-        <div class="col-md-3 brand-grid">
-            <img src="@{'/public/images/ic.png'}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-3 brand-grid">
-            <img src="@{'/public/images/ic1.png'}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-3 brand-grid">
-            <img src="@{'/public/images/ic2.png'}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-3 brand-grid">
-            <img src="@{'/public/images/ic3.png'}" class="" alt=""/>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</div>
-<!--//brand-->
-</div>
-
-</div>
-<!--//content-->
 <!--//footer-->
 <div class="footer">
     <div class="footer-middle">
@@ -138,7 +106,8 @@
                     <img src="@{'/public/images/log1.png'}" alt=""/>
 
                 </a>
-                <p>“Thời trang rất quan trọng, nó khiến cuộc sống này trở nên tốt đẹp hơn. Và cũng giống như những điều tuyệt vời khác, thời trang xứng đáng được bạn đầu tư công sức chăm chút cẩn thận”</p>
+                <p>“Thời trang rất quan trọng, nó khiến cuộc sống này trở nên tốt đẹp hơn. Và cũng giống như những điều
+                    tuyệt vời khác, thời trang xứng đáng được bạn đầu tư công sức chăm chút cẩn thận”</p>
             </div>
 
             <div class="col-md-3 footer-middle-in">
@@ -171,11 +140,12 @@
                 <h6>Hòm thư góp ý</h6>
                 <span>Đăng ký để gửi thư</span>
                 <form>
-                    <input type="text" value="Enter your E-mail" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Enter your E-mail';}">
+                    <input type="text" value="Enter your E-mail" onfocus="this.value='';"
+                           onblur="if (this.value == '') {this.value ='Enter your E-mail';}">
                     <input type="submit" value="Subscribe">
                 </form>
             </div>
-            <div class="clearfix"> </div>
+            <div class="clearfix"></div>
         </div>
     </div>
     <div class="footer-bottom">
@@ -191,15 +161,13 @@
                     <img src="@{'/public/images/f3.png'}" class="img-responsive" alt=""/>
                 </a></li>
             </ul>
-            <p class="footer-class">&copy; 8/4/2016 clothes shop. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">No name</a> </p>
-            <div class="clearfix"> </div>
+            <p class="footer-class">&copy; 8/4/2016 clothes shop. All Rights Reserved | Design by <a
+                    href="http://w3layouts.com/" target="_blank">No name</a></p>
+            <div class="clearfix"></div>
         </div>
     </div>
 </div>
 <!--//footer-->
-
-
-
 
 
 </body>

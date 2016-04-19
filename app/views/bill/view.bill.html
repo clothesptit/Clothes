@@ -118,7 +118,7 @@
 <div class="container">
     <hr/>
     <table class="table table-bordered border_tb">
-        <h1 class="text_bill">Bill</h1>
+        <h1 class="text_bill">Danh sach mat hang</h1>
         <thead>
         <tr>
             <th>Image</th>
@@ -130,7 +130,7 @@
             <th>Quantity</th>
             <th>Color</th>
             <th>Publisher <br/> name</th>
-            <th>Sale</th>
+            <th>Total Price</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -148,7 +148,17 @@
             <td>${clothesOrder.quantity}</td>
             <td>${clothes.color}</td>
             <td>${clothes.publisher.name}</td>
-            <td> Khuyến mại:<br>
+            <td>
+                <a href="Delete-from-bill.html?id=${clothes.id}">Xóa</a>
+            </td>
+            <td>
+                Tổng tiền:
+            </td>
+            </tr>
+
+        <tr>
+            <td style="color: #FF4040"> Khuyến mại:</td>
+            <td colspan="9">
                 #{set currentTime:new Date().getTime().asdate('yyyy-MM-dd hh:mm:ss.S').toString()/}
                 #{if currentTime>clothes.deal.timeStart.toString() && currentTime<clothes.deal.timeStop.toString()}
                     #{if clothes.deal.sale>0}
@@ -164,9 +174,7 @@
                 #{/else}
 
             </td>
-            <td>
-                <a href="Delete-from-bill.html?id=${clothes.id}">Xóa</a>
-            </td>
+
         </tr>
         #{/list}
         </tbody>
