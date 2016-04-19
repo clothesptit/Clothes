@@ -21,7 +21,7 @@ public class Bill extends GenericModel implements Serializable {
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     public Date date;
-    @Column(nullable = false)
+    @Column
     public boolean paymentMethod;
     @ManyToOne
     @JoinColumn(name = "id_address_shipping")

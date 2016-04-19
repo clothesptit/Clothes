@@ -86,6 +86,43 @@ public class BillController extends Controller {
         Mails.sendConfirmOrder(bill);
     }
 
+    public synchronized static void saveBill(String token) {
+        Bill bill = (Bill) Cache.get(token);
+        if (bill == null) {
+            redirect("../../Clothes/Homepage.html");
+        }
+        Customer customer = (Customer) Cache.get(session.get("username"));
+        if (customer.point < bill.usePoint) {
+            redirect("../../Clothes/Homepage.html");
+        }
+        int idBill = 1;
+        try {
+            idBill = (Integer) JPA.em().createQuery("SELECT MAX(b.id) FROM Bill b").getSingleResult() + 1;
+        } catch (NullPointerException e) {
+        }
+        bill.id = idBill;
+        bill.save();
+        Deal deal;
+        int idDeal = 0;
+        try {
+            idDeal = (Integer) JPA.em().createQuery("SELECT MAX(d.id) FROM Deal d").getSingleResult() + 1;
+        } catch (NullPointerException e) {
+        }
+        for (int i = 0; i < bill.clothesOrderList.size(); i++) {
+            deal = bill.clothesOrderList.get(i).clothes.deal;
+            deal.id = idDeal + i;
+            bill.clothesOrderList.get(i).deal = deal;
+            bill.clothesOrderList.get(i).bill = bill;
+            deal.save();
+            bill.clothesOrderList.get(i).save();
+        }
+        Cache.delete(token);
+        Cache.delete("bill" + session.get("username"));
+        bill.status = "Đơn hàng đã được xác nhận";
+        Mails.sendStatusOrder(customer, bill);
+        redirect("../View-bill.html?id=" + idBill);
+    }
+
     public static void viewAllBill() {
         List<Bill> bills = Bill.findAll();
         if (Cache.get("bill" + session.get("username")) != null) {

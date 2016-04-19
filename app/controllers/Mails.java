@@ -19,11 +19,6 @@ public class Mails extends Mailer {
     private static Calendar cal = Calendar.getInstance();
 
     public static void sendConfirmOrder(Bill bill) {
-        bill.customer = new Customer();
-        bill.customer.email = "thanhtam.ha1994@hotmail.com";
-        bill.customer.fullName = "Hà Thanh Tâm";
-        bill.customer.phone = "0987654321";
-        bill.addressShipping = new AddressShipping("97A", "Mỗ Lao", "Hà Đông", "Hà Nội");
         setSubject("Xác nhận đơn đặt hàng quần áo");
         addRecipient(bill.customer.email);
         setFrom("Website Bán Quần Áo <demoptit@gmail.com>");
@@ -32,29 +27,19 @@ public class Mails extends Mailer {
             token = random.randomAlphanumeric(32);
         }
         String hostName = Play.configuration.getProperty("application.baseUrl");
-        String linkConfirm = hostName + "Confirm-order.html?token=" + token;
+        String linkConfirm = hostName + "Bill/Save-bill.html?token=" + token;
         bill.date = cal.getTime();
-        Clothes clothes = new Clothes();
-        clothes.title = "Áo 1";
-        clothes.size = "M";
-//        EmailAttachment attachment;
-//        for (int i = 0; i < bill.clothesOrderList.size(); i++) {
-//            attachment = new EmailAttachment();
-//            attachment.setDescription(bill.clothesOrderList.get(i).clothes.title);
-//            attachment.setPath(Play.getFile("/public/" + bill.clothesOrderList.get(i).clothes.image).getPath());
-//            addAttachment(attachment);
-//        }
         Cache.set(token, bill, "24h");
         Cache.set(bill.customer.username, token, "24h");
-        send("mails/send.confirm.order", linkConfirm, bill);
+        send("mails/send.confirm.bill", linkConfirm, bill);
     }
 
     public static void sendStatusOrder(Customer customer, Bill bill) {
-        send("mails/send.status.order");
+        send("mails/send.status.bill");
     }
 
     public static void sendCompletedOrder(Customer customer, Bill bill) {
-        send("mails/send.completed.order");
+        send("mails/send.completed.bill");
     }
 
 }
