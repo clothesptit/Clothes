@@ -274,7 +274,6 @@ th {
   font-style: normal;
   font-weight: normal;
   line-height: 1;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -2294,6 +2293,8 @@ th {
 }
 .table .table {
   background-color: #fff;
+  border: 2px;
+  color: red;
 }
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
@@ -2333,6 +2334,7 @@ table td[class*="col-"],
 table th[class*="col-"] {
   position: static;
   display: table-cell;
+  width:90px ;
   float: none;
 }
 .table > thead > tr > td.active,
@@ -2464,7 +2466,12 @@ table th[class*="col-"] {
     white-space: nowrap;
   }
   .table-responsive > .table-bordered {
-    border: 0;
+    border: 2px;
+    color: red;
+  }
+  .border_tb{
+    border: 2px;
+    color: red;
   }
   .table-responsive > .table-bordered > thead > tr > th:first-child,
   .table-responsive > .table-bordered > tbody > tr > th:first-child,

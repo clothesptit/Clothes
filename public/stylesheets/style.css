@@ -657,10 +657,10 @@ a.buy-now:hover{
 	height: 500px;
 }
 .zoom-icon {
-	    position: absolute;
+	position: absolute;
     opacity: 0;
     filter: alpha(opacity=0);
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)";
+    /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)";*/
     display: block;
     left: 0;
     top: -152px;
@@ -1407,6 +1407,15 @@ th{
 }
 th, td {
     padding: 10px;
+}
+.small_image{
+	width: 55px;
+}
+.text_bill{
+	text-align: center;
+	color: #ff6666;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 td{
 	color:#b2b2b2;
@@ -2486,4 +2495,15 @@ td.add-check a {
     background-position-x: -225px;
     background-size: 542px;
 }
+}
+
+/* fix bill*/
+.table {
+	/*table-layout: fixed;*/
+}
+.success img {
+	width: 75% !important;
+}
+.table>thead>tr>th{
+	font-size: 19px !important;
 }
