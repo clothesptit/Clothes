@@ -20,16 +20,15 @@ public class ClothesOrder extends GenericModel implements Serializable {
     @Column(nullable = false)
     public int quantity;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_bill")
+    @JoinColumn(name = "id_bill", nullable = false)
     public Bill bill;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_deal")
     public Deal deal;
 
     public ClothesOrder(Clothes clothes, int quantity) {
         this.clothes = clothes;
         this.quantity = quantity;
-        this.deal = deal;
     }
 
     public ClothesOrder() {

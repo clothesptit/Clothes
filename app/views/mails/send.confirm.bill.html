@@ -6,20 +6,15 @@
 <body>
 <h1>Xin chào ${bill.customer.fullName}</h1><br>
 Thông tin đơn hàng:<br>
-#{list items:bill.clothesOrderList,as:'clothesOrder'}
-<table>
-    <tr>
-        <td>${clothesOrder.clothes.title}</td>
-        <td>${clothesOrder.clothes.size}</td>
-        <td>${clothesOrder.clothes.price}</td>
-        <td>${clothesOrder.quantity}</td>
-    </tr>
-</table>
-#{/list}
 Nơi giao hàng: ${bill.addressShipping.toString()}<br>
 Số điện thoại: ${bill.customer.phone}<br>
 Thời gian đặt mua: ${bill.displayDate()}<br>
 Bạn hãy Click vào Link dưới đây để xác nhận đơn hàng<br>
 <a href="${linkConfirm}">Link xác nhận</a>
+#{list items:bill.clothesOrderList,as:'clothesOrder'}
+<!--
+Làm giống trang view.bill.html nhưng bỏ cột xóa.
+-->
+#{/list}
 </body>
 </html>
