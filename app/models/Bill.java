@@ -33,6 +33,7 @@ public class Bill extends GenericModel implements Serializable {
     public List<ClothesOrder> clothesOrderList;
     @Column(name = "status", length = 100)
     public String status;
+    public int usePoint;
 
     public Bill(Date date, boolean paymentMethod, AddressShipping addressShipping, Customer customer, List<ClothesOrder> clothesOrderList) {
         this.date = date;

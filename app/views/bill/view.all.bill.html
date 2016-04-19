@@ -5,6 +5,16 @@
     <title>Xem tất cả đơn hàng đã đặt</title>
 </head>
 <body>
-
+#{if bills.size()!=0}
+    #{list items:bills, as:'bill'}
+        ${bill.id}
+        ${bill.addressShipping.toString()}
+        ${bill.status}
+        <a href="View-bill-by-id.html?id=${bill.id}"></a>
+    #{/list}}
+#{/if}
+#{else}
+Bạn không có đơn hàng nào.
+#{/else}}
 </body>
 </html>

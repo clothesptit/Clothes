@@ -2,6 +2,7 @@ package controllers;
 
 import models.*;
 import play.cache.Cache;
+import play.db.jpa.JPA;
 import play.mvc.Before;
 import play.mvc.Controller;
 
@@ -63,7 +64,16 @@ public class BillController extends Controller {
         render("bill/view.bill.html");
     }
 
-    public static void confirmBill(String num, String ward, String district, String city) {
+    public static void viewBillById(int id) {
+        if (id == 0) {
+            redirect("View-bill.html");
+        }
+        Bill bill = Bill.findById(id);
+        renderArgs.put("bill", bill);
+        render("bill/view.bill.by.id.html");
+    }
+
+    public static void confirmBill(int usePoint, String num, String ward, String district, String city) {
         if (Cache.get("bill" + session.get("username")) == null) {
             redirect("../Homepage.html");
         }
@@ -71,14 +81,16 @@ public class BillController extends Controller {
         Calendar cal = Calendar.getInstance();
         bill.date = cal.getTime();
         bill.addressShipping = new AddressShipping(num, ward, district, city);
+        bill.usePoint = usePoint;
         Mails.sendConfirmOrder(bill);
-        redirect("../View-bill.html");
     }
 
     public static void viewAllBill() {
         List<Bill> bills = Bill.findAll();
         if (Cache.get("bill" + session.get("username")) != null) {
-            bills.add((Bill) Cache.get("bill" + session.get("username")));
+            Bill bill = (Bill) Cache.get("bill" + session.get("username"));
+            bill.id = 0;
+            bills.add(bill);
         }
         renderArgs.put("bills", bills);
         render("bill/view.all.bill.html");

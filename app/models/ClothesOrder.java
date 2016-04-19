@@ -22,10 +22,14 @@ public class ClothesOrder extends GenericModel implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_bill")
     public Bill bill;
+    @OneToOne
+    @JoinColumn(name = "id_deal")
+    public Deal deal;
 
     public ClothesOrder(Clothes clothes, int quantity) {
         this.clothes = clothes;
         this.quantity = quantity;
+        this.deal = deal;
     }
 
     public ClothesOrder() {

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xem thông tin đơn hàng</title>
+</head>
+<body>
+Số hóa đơn: ${bill.id}
+Ngày mua: ${bill.displayDate()}
+Địa chỉ giao hàng: ${bill.addressShipping.toString()}
+Người nhận: ${bill.customer.fullName}
+Số điện thoại: ${bill.customer.phoneNum}
+Email: ${bill.customer.email}
+Số điểm sử dụng để quy đổi: ${bill.usePoint}
+<!--
+Phần còn lại giống trang view bill nhưng bỏ địa chỉ và usePoint.
+-->
+</body>
+</html>
