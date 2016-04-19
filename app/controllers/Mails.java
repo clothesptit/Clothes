@@ -43,6 +43,10 @@ public class Mails extends Mailer {
         send("mails/send.status.bill", bill, customer, linkViewBill);
     }
 
+    public static void sendCancelOrder(Bill bill) {
+
+    }
+
     public static void sendCompletedOrder(Customer customer, Bill bill) {
         send("mails/send.completed.bill");
     }

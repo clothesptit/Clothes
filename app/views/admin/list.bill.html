@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý đơn hàng</title>
+</head>
+<body>
+#{if bills!=null}
+<form action="Save-bill.html" method="post">
+    Lưu những thay đổi: <input type="submit" value="Save"><br>
+    <table border="solid 1px">
+        <tr>
+            <td>Mã đơn hàng</td>
+            <td>Khách hàng</td>
+            <td>Địa chỉ giao hàng</td>
+            <td>Trạng thái đơn hàng</td>
+            <td>Xem đơn hàng</td>
+            <td>Thao tác</td>
+            <td>Check</td>
+        </tr>
+        #{list items:bills,as:'bill'}
+            <tr>
+                <td>${bill.id}</td>
+                <td>${bill.customer.fullName}</td>
+                <td>${bill.addressShipping.toString()}</td>
+                <td>${bill.status}</td>
+                <td><a href="View-bill-by-id.html?id=${bill.id}">Xem đơn hàng</a></td>
+                <td>
+                    <select name="status${bill.id}">
+                        <option value="Đơn hàng đang chờ xác nhận"
+                            #{if bill.status=='Đơn hàng đang chờ xác nhận'} selected="selected"#{/if}
+                        >Đơn hàng đang chờ xác nhận
+                        </option>
+                        <option value="Đơn hàng đã được xác nhận"
+                            #{if bill.status=='Đơn hàng đã được xác nhận'} selected="selected"#{/if}
+                        >Đơn hàng đã được xác nhận
+                        </option>
+                        <option value="Đơn hàng đã được đóng gói"
+                            #{if bill.status=='Đơn hàng đã được đóng gói'} selected="selected"#{/if}
+                        >Đơn hàng đã được đóng gói
+                        </option>
+                        <option value="Đơn hàng đã bắt đầu giao"
+                            #{if bill.status=='Đơn hàng đã bắt đầu giao'} selected="selected"#{/if}
+                        >Đơn hàng đã bắt đầu giao
+                        </option>
+                        <option value="Đơn hàng đã chuyển thành công"
+                            #{if bill.status=='Đơn hàng đã chuyển thành công'} selected="selected"#{/if}
+                        >Đơn hàng đã chuyển thành công
+                        </option>
+                        <option value="Hủy đơn hàng"
+                            #{if bill.status=='Hủy đơn hàng'} selected="selected"#{/if}
+                        >Hủy đơn hàng
+                        </option>
+                    </select>
+                </td>
+                <td><input type="checkbox" name="idCheck" value="${bill.id}"></td>
+            </tr>
+        #{/list}
+    </table>
+</form>
+#{/if}
+</body>
+</html>
