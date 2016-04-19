@@ -96,12 +96,13 @@ public class BillController extends Controller {
         if (bill == null) {
             redirect("../../Clothes/Homepage.html");
         }
-        Customer customer = bill.customer;
+        Customer customer = Customer.findById(bill.customer.id);
         if (customer.point < bill.usePoint) {
             redirect("../../Clothes/Homepage.html");
         }
         customer.point = customer.point - bill.usePoint;
         customer.save();
+        bill.customer = customer;
         int idAddressShipping = 0;
         try {
             idAddressShipping = (Integer) JPA.em().createQuery("SELECT MAX(a.id) FROM AddressShipping a")
