@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
 </head>
 <body>
-
+<h1>Xin chào ${bill.customer.fullName}</h1><br>
+Thông tin đơn hàng:<br>
+Nơi giao hàng: ${bill.addressShipping.toString()}<br>
+Số điện thoại: ${bill.customer.phone}<br>
+Thời gian đặt mua: ${bill.displayDate()}<br>
+Trạng thái đơn hàng: ${bill.status}<br>
+Bạn hãy Click vào Link dưới đây để xem đơn hàng<br>
+<a href="${linkViewBill}">Link xác nhận</a>
 </body>
 </html>
