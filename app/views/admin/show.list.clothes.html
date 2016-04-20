@@ -25,7 +25,7 @@
     </tr>
     #{set index:0/}
     #{list items:clothesList,as:'clothes'}
-        <form action="Add-clothes-publisher.html?idPublisher=${clothes.publisher.id}&index=${index}" method="post">
+        <form action="Add-clothes-publisher.html?idPublisher=${idPublisher}&index=${index}" method="post">
             <tr>
                 <td>${clothes.id}</td>
                 <td>${clothes.title}</td>

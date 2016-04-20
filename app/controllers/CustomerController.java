@@ -54,6 +54,7 @@ public class CustomerController extends Controller {
 
     public static void logout() {
         Cache.delete(session.get("username"));
+        session.remove("username");
         redirect("../Login-form.html");
     }
 

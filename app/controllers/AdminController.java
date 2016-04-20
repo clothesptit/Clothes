@@ -1,6 +1,7 @@
 package controllers;
 
 import com.clothes1.services.ClothesService1;
+import com.clothes2.services.ClothesService2;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import models.*;
@@ -59,16 +60,25 @@ public class AdminController extends Controller {
                 Cache.set(session.get("username") + "clothesList" + idPublisher, clothesList);
                 renderArgs.put("clothesList", clothesList);
             }
+            if (publisherService.interfaceName.equals("ClothesService2")) {
+                ClothesService2 clothesService2 = service.getPort(ClothesService2.class);
+                Type listType = new TypeToken<ArrayList<Clothes>>() {
+                }.getType();
+                List<Clothes> clothesList = gson.fromJson(clothesService2.findAll(), listType);
+                Cache.set(session.get("username") + "clothesList" + idPublisher, clothesList);
+                renderArgs.put("clothesList", clothesList);
+            }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        render("admin/show.list.clothes.html");
+        render("admin/show.list.clothes.html", idPublisher);
     }
 
     public synchronized static void addClothesPublisher(int idPublisher, int index, float price, int sale, float voucher, String timeStart, String timeStop) {
         List<Clothes> clothesList = (List<Clothes>) Cache.get(session
                 .get("username") + "clothesList" + idPublisher);
         Clothes clothes = clothesList.get(index);
+        clothes.publisher = Publisher.findById(idPublisher);
         try {
             Deal deal = new Deal();
             deal.id = 0;
