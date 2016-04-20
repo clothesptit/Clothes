@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
 #{script 'jquery.js'/}
@@ -11,6 +11,12 @@
 <body>
 <div class="container">
     <div><h1>Xin chào ${bill.customer.fullName}</h1><br>
+        <span style="color: red">
+            Chúng tôi xin lỗi vì không thể cung cấp các mặt hàng trong đơn hàng dưới đây cho bạn được.<br>
+            Số điểm tích lũy bạn đã sử dụng cho đơn hàng này là ${bill.usePoint} sẽ được hoàn lại
+            vào tài khoản của bạn.
+        </span>
+        <br>
         <h3>
             <mark> Thông tin đơn hàng:</mark>
         </h3>

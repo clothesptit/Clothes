@@ -17,6 +17,10 @@ public class BillController extends Controller {
     static void checkNotAuthentification() {
         if (Cache.get(session.get("username")) == null) {
             redirect("../../Customer/Login-form.html");
+        } else {
+            Customer customer = (Customer) Cache.get(session.get("username"));
+            customer = Customer.findById(customer.id);
+            Cache.set(session.get("username"), customer);
         }
     }
 
@@ -60,6 +64,10 @@ public class BillController extends Controller {
             redirect("../../Clothes/Homepage.html");
         }
         Bill bill = (Bill) Cache.get("bill" + session.get("username"));
+        for (int i = 0; i < bill.clothesOrderList.size(); i++) {
+            bill.clothesOrderList.get(i).clothes = Clothes.findById(bill.clothesOrderList.get(i).clothes.id);
+        }
+        Cache.set("bill" + session.get("username"), bill);
         renderArgs.put("bill", bill);
         renderArgs.put("customer", (Customer) Cache.get(session.get("username")));
         render("bill/view.bill.html");

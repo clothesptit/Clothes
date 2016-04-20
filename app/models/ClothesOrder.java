@@ -37,9 +37,15 @@ public class ClothesOrder extends GenericModel implements Serializable {
     public float displayPriceAfterSale() {
         float price = 0;
         price += quantity * clothes.price;
-        if (deal.sale > 0) {
-            price = price - (float) ((price * deal.sale) / 100);
+        if (clothes.deal.sale > 0) {
+            price = price - (float) ((price * clothes.deal.sale) / 100);
         }
+        return price;
+    }
+
+    public float displayPrice() {
+        float price = 0;
+        price += quantity * clothes.price;
         return price;
     }
 }

@@ -40,20 +40,17 @@
                                 <div class="col-sm-8">
                                 ${bill.displayDate()}</div>
                             </div>
-
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-4 control-label">Địa chỉ giao hàng: </label>
                                 <div class="col-sm-8">
                                 ${bill.addressShipping.toString()}</div>
                             </div>
-
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-4 control-label">Người nhận:
                                 </label>
                                 <div class="col-sm-8">
                                 ${bill.customer.fullName}</div>
                             </div>
-
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-4 control-label">Số điện thoại: </label>
                                 <div class="col-sm-8"> ${bill.customer.phone}</div>
@@ -69,10 +66,20 @@
                                 <div class="col-sm-8">
                                 ${bill.usePoint}</div>
                             </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Tổng số tiên thanh
+                                    toán: </label>
+                                <div class="col-sm-8">
+                                ${bill.getTotalPrice()}</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Trạng thái đơn hàng</label>
+                                <div class="col-sm-8">
+                                ${bill.status}</div>
+                            </div>
                         </form>
                     </td>
                 </tr>
-
             </table>
         </div>
         <div class="col-lg-2"></div>
@@ -81,7 +88,6 @@
 <div class="container">
     <hr/>
     <table class="table table-bordered border_tb">
-
         <thead>
         <tr>
             <th>Image</th>
@@ -100,7 +106,6 @@
         #{list items:bill.clothesOrderList,as:'clothesOrder'}
         <tr class="success">
             #{set clothes:clothesOrder.clothes/}
-        *{<td width="90px"><img src="${clothes.image}" width="70px"></td>}*
             <td><img src="${clothes.image}"></td>
             <td>${clothes.title}</td>
             <td>${clothes.type}</td>
@@ -111,30 +116,42 @@
             <td>${clothes.color}</td>
             <td>${clothes.publisher.name}</td>
             <td>
-                Tổng tiền:
+            ${clothesOrder.displayPrice()}
             </td>
         </tr>
         <tr>
             <td>Khuyến mại:</td>
-            <td colspan="9">
-            #{set currentTime:new Date().getTime().asdate('yyyy-MM-dd hh:mm:ss.S').toString()/}
-            #{if currentTime>clothes.deal.timeStart.toString() && currentTime<clothes.deal.timeStop.toString()}
-                #{if clothes.deal.sale>0}
-                    Giảm giá ${clothes.deal.sale}% chỉ còn ${clothes.price * (100 - clothes.deal.sale) / 100}<br>
+            <td colspan="6">
+                #{set currentTime:new Date().getTime().asdate('yyyy-MM-dd hh:mm:ss.S').toString()/}
+                #{if currentTime>clothes.deal.timeStart.toString() && currentTime<clothes.deal.timeStop.toString()}
+                    #{if clothes.deal.sale>0}
+                        Giảm giá ${clothes.deal.sale}% chỉ còn ${clothes.price * (100 - clothes.deal.sale) / 100}<br>
+                    #{/if}
+                    #{if clothes.deal.voucher>0}
+                        Tặng Voucher trị giá ${clothes.deal.voucher}<br>
+                    #{/if}
+                    Thời gian kết thúc khuyến mại: ${clothes.deal.timeStop.toString()}
                 #{/if}
-                #{if clothes.deal.voucher>0}
-                    Tặng Voucher trị giá ${clothes.deal.voucher}<br>
-                #{/if}
-                Thời gian kết thúc khuyến mại: ${clothes.deal.timeStop.toString()}
-            #{/if}
-            #{else}
-                Không có chương trình khuyến mại.
-            #{/else}
-
-        </td></tr>
+                #{else}
+                    Không có chương trình khuyến mại.
+                #{/else}
+            </td>
+            <td colspan="3">Giá sau khi giảm:<br>
+            ${clothesOrder.displayPriceAfterSale()}
+            </td>
+        </tr>
         #{/list}
         </tbody>
     </table>
+    <style>
+        .border_tb tr td {
+            color: black;
+        }
+
+        .form-group {
+            color: black;
+        }
+    </style>
 *{Thong tin giao hang}*
 
 </div>
@@ -211,18 +228,6 @@
     </div>
 </div>
 <!--//footer-->
-
 *{<!--End view bill by id-->}*
-
-*{Số hóa đơn: ${bill.id}}*
-*{Ngày mua: ${bill.displayDate()}}*
-*{Địa chỉ giao hàng: ${bill.addressShipping.toString()}}*
-*{Người nhận: ${bill.customer.fullName}}*
-*{Số điện thoại: ${bill.customer.phone}}*
-*{Email: ${bill.customer.email}}*
-*{Số điểm sử dụng để quy đổi: ${bill.usePoint}}*
-*{<!--}*
-*{Phần còn lại giống trang view bill nhưng bỏ địa chỉ và usePoint.}*
-*{-->}*
 </body>
 </html>

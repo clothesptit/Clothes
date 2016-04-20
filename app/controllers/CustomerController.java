@@ -23,6 +23,8 @@ public class CustomerController extends Controller {
     static void checkAuthentification() {
         Customer customer = (Customer) Cache.get(session.get("username"));
         if (customer != null) {
+            customer = Customer.findById(customer.id);
+            Cache.set(session.get("username"), customer);
             redirect("../View-info.html");
         }
     }

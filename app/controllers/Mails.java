@@ -44,11 +44,23 @@ public class Mails extends Mailer {
     }
 
     public static void sendCancelOrder(Bill bill) {
-
+        Customer customer = bill.customer;
+        setSubject("Hủy đơn hàng của bạn.");
+        addRecipient(bill.customer.email);
+        setFrom("Website Bán Quần Áo <demoptit@gmail.com>");
+        String hostName = Play.configuration.getProperty("application.baseUrl");
+        String linkViewBill = hostName + "Bill/View-bill-by-id.html?id=" + bill.id;
+        send("mails/send.cancel.bill", bill, customer, linkViewBill);
     }
 
-    public static void sendCompletedOrder(Customer customer, Bill bill) {
-        send("mails/send.completed.bill");
+    public static void sendCompletedOrder(Bill bill) {
+        Customer customer = bill.customer;
+        setSubject("Chuyển thành công đơn hàng.");
+        addRecipient(bill.customer.email);
+        setFrom("Website Bán Quần Áo <demoptit@gmail.com>");
+        String hostName = Play.configuration.getProperty("application.baseUrl");
+        String linkViewBill = hostName + "Bill/View-bill-by-id.html?id=" + bill.id;
+        send("mails/send.completed.bill", bill, customer, linkViewBill);
     }
 
 }

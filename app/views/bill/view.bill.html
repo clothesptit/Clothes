@@ -5,44 +5,6 @@
     <title>Xem thông tin đơn hàng</title>
 </head>
 <body>
-*{#{list items:bill.clothesOrderList,as:'clothesOrder'}}*
-*{#{set clothes:clothesOrder.clothes/}}*
-*{<img src="${clothes.image}" width="100px">}*
-*{${clothes.title}}*
-*{${clothes.type}}*
-*{${clothes.size}}*
-*{${clothes.material}}*
-*{${clothes.price}}*
-*{${clothesOrder.quantity}}*
-*{${clothes.color}}*
-*{${clothes.publisher.name}}*
-*{Khuyến mại:<br>}*
-*{#{set currentTime:new Date().getTime().asdate('yyyy-MM-dd hh:mm:ss.S').toString()/}}*
-*{#{if currentTime>clothes.deal.timeStart.toString() && currentTime<clothes.deal.timeStop.toString()}}*
-*{#{if clothes.deal.sale>0}}*
-*{Giảm giá ${clothes.deal.sale}% chỉ còn ${clothes.price * (100 - clothes.deal.sale) / 100}<br>}*
-*{#{/if}}*
-*{#{if clothes.deal.voucher>0}}*
-*{Tặng Voucher trị giá ${clothes.deal.voucher}<br>}*
-*{#{/if}}*
-*{Thời gian kết thúc khuyến mại: ${clothes.deal.timeStop.toString()}}*
-*{#{/if}}*
-*{#{else}}*
-*{Không có chương trình khuyến mại.}*
-*{#{/else}}*
-*{<a href="Delete-from-bill.html?id=${clothes.id}">Xóa</a>}*
-*{#{/list}}*
-*{Thông tin giao hàng:}*
-*{<form>}*
-*{Số nhà: <input type="text" name="num">}*
-*{Đường: <input type="text" name="ward">}*
-*{Quận/Huyện: <input type="text" name="district">}*
-*{Tỉnh thành: <input type="text" name="city">}*
-*{Số điểm đang có: ${customer.point}}*
-*{Số điểm quy đổi: <input type="text" value="0" name="usePoint">}*
-*{<input type="submit" value="Mua hàng">}*
-*{</form>}*
-
 
 <!--header-->
 #{include 'layout/top.header.html'/}
@@ -58,8 +20,8 @@
 </div>
 <!--End banner>
 
-
 <!--Bill-->
+#{set totalPriceNoPoint:bill.getTotalPriceNoPoint()/}
 <div class="container">
     <h1 class="text_bill">Thông tin giao hàng</h1>
     <em class="em"></em>
@@ -74,25 +36,21 @@
                             <div class="col-sm-8">
                                 <input type="text" name="num"></div>
                         </div>
-
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-4 control-label">Đường: </label>
                             <div class="col-sm-8">
                                 <input type="text" name="ward"></div>
                         </div>
-
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-4 control-label">Quận/Huyện: </label>
                             <div class="col-sm-8">
                                 <input type="text" name="district"></div>
                         </div>
-
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-4 control-label">Tỉnh thành </label>
                             <div class="col-sm-8">
                                 <input type="text" name="city"></div>
                         </div>
-
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-4 control-label">Số điểm đang có: </label>
                             <div class="col-sm-8">${customer.point}</div>
@@ -100,19 +58,27 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-4 control-label">Số điểm quy đổi: </label>
                             <div class="col-sm-8">
-                                <input type="text" name="usePoint" value="0"></div>
+                                <input type="text" onchange="onChangePoint()" id="usePoint" name="usePoint" value="0">
+                            </div>
                         </div>
-                    *{Quận/Huyện: <input type="text" name="district"><br/>}*
-                    *{Tỉnh thành: <input type="text" name="city"><br/>}*
-                    *{Số điểm đang có: ${customer.point}<br/>}*
-                    *{Số điểm quy đổi: <input type="text" value="0" name="usePoint"><br/>}*
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">Tổng số tiên thanh
+                                toán: </label>
+                            <div class="col-sm-8">
+                                <span id="totalPrice">${bill.getTotalPrice()}</span></div>
+                        </div>
                         <input type="submit" value="Mua hàng">
                     </form>
                 </td>
             </tr>
-
         </table>
     </div>
+    <script>
+        function onChangePoint() {
+            var totalPriceNoPoint = parseFloat(${totalPriceNoPoint});
+            $("#totalPrice").html(totalPriceNoPoint - parseInt($("#usePoint").val()) * 1000);
+        }
+    </script>
     <div class="col-lg-2"></div>
 </div>
 <div class="container">
@@ -138,7 +104,6 @@
         #{list items:bill.clothesOrderList,as:'clothesOrder'}
         <tr class="success">
             #{set clothes:clothesOrder.clothes/}
-        *{<td width="90px"><img src="${clothes.image}" width="70px"></td>}*
             <td><img src="${clothes.image}"></td>
             <td>${clothes.title}</td>
             <td>${clothes.type}</td>
@@ -149,16 +114,15 @@
             <td>${clothes.color}</td>
             <td>${clothes.publisher.name}</td>
             <td>
-                <a href="Delete-from-bill.html?id=${clothes.id}">Xóa</a>
+            ${clothesOrder.displayPrice()}
             </td>
             <td>
-                Tổng tiền:
+                <a href="Delete-from-bill.html?id=${clothes.id}">Xóa</a>
             </td>
-            </tr>
-
+        </tr>
         <tr>
             <td style="color: #FF4040"> Khuyến mại:</td>
-            <td colspan="9">
+            <td colspan="7">
                 #{set currentTime:new Date().getTime().asdate('yyyy-MM-dd hh:mm:ss.S').toString()/}
                 #{if currentTime>clothes.deal.timeStart.toString() && currentTime<clothes.deal.timeStop.toString()}
                     #{if clothes.deal.sale>0}
@@ -172,17 +136,26 @@
                 #{else}
                     Không có chương trình khuyến mại.
                 #{/else}
-
             </td>
-
+            <td colspan="3">Giá sau khi giảm:<br>
+            ${clothesOrder.displayPriceAfterSale()}
+            </td>
         </tr>
         #{/list}
         </tbody>
     </table>
+    <style>
+        .border_tb tr td {
+            color: black;
+        }
+
+        .form-group {
+            color: black;
+        }
+    </style>
 *{Thong tin giao hang}*
 
 </div>
-
 
 <!--Bill-->
 <!--brand-->
@@ -212,12 +185,10 @@
             <div class="col-md-3 footer-middle-in">
                 <a href="index.html">
                     <img src="@{'/public/images/log1.png'}" alt=""/>
-
                 </a>
                 <p>“Thời trang rất quan trọng, nó khiến cuộc sống này trở nên tốt đẹp hơn. Và cũng giống như những điều
                     tuyệt vời khác, thời trang xứng đáng được bạn đầu tư công sức chăm chút cẩn thận”</p>
             </div>
-
             <div class="col-md-3 footer-middle-in">
                 <h6>Thông tin</h6>
                 <ul class=" in">
@@ -276,7 +247,5 @@
     </div>
 </div>
 <!--//footer-->
-
-
 </body>
 </html>

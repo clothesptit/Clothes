@@ -22,11 +22,12 @@
         <input type="submit" id="btnSetDeal" value="Áp dụng">
     </form>
     <br>
-    <br>
-    <br>
 </div>
 #{if clothesList!=null}
 <form action="Save-clothes.html" id="frmClothes" method="post">
+    <input type="submit" value="Save">&nbsp; <input type="button" id="btnDelete" value="Delete">
+    <br>
+    <br>
     <table border="solid 1px">
         <tr style="text-align: center">
             <td>Id</td>
@@ -89,8 +90,6 @@
             #{set index=index+1/}
         #{/list}
     </table>
-    <br>
-    <input type="submit" value="Save">&nbsp; <input type="button" id="btnDelete" value="Delete">
 </form>
 #{/if}
 <script>

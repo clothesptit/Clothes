@@ -11,6 +11,7 @@
     <table border="solid 1px">
         <tr>
             <td>Mã đơn hàng</td>
+            <td>Tài khoản</td>
             <td>Khách hàng</td>
             <td>Địa chỉ giao hàng</td>
             <td>Trạng thái đơn hàng</td>
@@ -21,6 +22,7 @@
         #{list items:bills,as:'bill'}
             <tr>
                 <td>${bill.id}</td>
+                <td>${bill.customer.username}</td>
                 <td>${bill.customer.fullName}</td>
                 <td>${bill.addressShipping.toString()}</td>
                 <td>${bill.status}</td>

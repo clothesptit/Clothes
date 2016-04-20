@@ -2,8 +2,36 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
+#{script 'jquery.js'/}
+#{script 'bootstrap.js'/}
+#{script 'bootstrap.min.js'/}
+#{script 'npm.js'/}
+#{stylesheet 'style.css'/}
 </head>
 <body>
-
+<div class="container">
+    <div><h1>Xin chào ${bill.customer.fullName}</h1><br>
+        <span style="color: red">
+            Đơn hàng của bạn đã được chuyển thành công.<br>
+            Số điểm tích lũy bạn đã sử dụng là ${bill.usePoint}<br>
+            Số điểm được cộng cho đơn hàng này là ${bill.getPointPlus()}
+        </span>
+        <br>
+        <h3>
+            <mark> Thông tin đơn hàng:</mark>
+        </h3>
+        Mã đơn hàng: ${bill.id}<br>
+        Nơi giao hàng: ${bill.addressShipping.toString()}<br>
+        Số điện thoại: ${bill.customer.phone}<br>
+        Thời gian đặt mua: ${bill.displayDate()}<br>
+        Trạng thái đơn hàng: ${bill.status}<br>
+        <em></em>
+        <mark>
+            Bạn hãy Click vào Link dưới đây để xem đơn hàng
+        </mark>
+        <br/>
+        <a href="${linkViewBill}">Link xem hóa đơn</a>
+    </div>
+</div>
 </body>
 </html>

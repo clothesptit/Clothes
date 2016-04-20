@@ -18,53 +18,7 @@
     </div>
 </div>
 <!--End banner>
-
-
 <!--Bill-->
-*{<div class="container">}*
-*{<h1 class="text_bill">Thông tin đơn hàng</h1>}*
-*{<em class="em"></em>}*
-*{<div class="col-lg-4"></div>}*
-*{<div class="col-lg-6">}*
-*{<table>}*
-*{<tr>}*
-*{<td>}*
-*{<form class="form-horizontal" action="Confirm-bill.html" role="form">}*
-*{#{if bills.size()!=0}}*
-*{#{list items:bills, as:'bill'}}*
-*{<div class="form-group">}*
-*{<label for="inputEmail3" class="col-sm-4 control-label">Mã đơn hàng: </label>}*
-*{<div class="col-sm-8">}*
-*{${bill.id}</div>}*
-*{</div>}*
-
-*{<div class="form-group">}*
-*{<label for="inputEmail3" class="col-sm-4 control-label"> Địa chỉ giao hàng: </label>}*
-*{<div class="col-sm-8">}*
-*{${bill.addressShipping.toString()}</div>}*
-*{</div>}*
-
-*{<div class="form-group">}*
-*{<label for="inputEmail3" class="col-sm-4 control-label">Trạng thái đơn hàng:  </label>}*
-*{<div class="col-sm-8">}*
-*{${bill.status}</div>}*
-*{</div>}*
-
-*{<a href="View-bill-by-id.html?id=${bill.id}">Xem đơn hàng</a>}*
-*{#{/list}}*
-*{#{/if}}*
-*{#{else}}*
-*{Bạn không có đơn hàng nào.}*
-*{#{/else}}*
-*{</form>}*
-*{</td>}*
-*{</tr>}*
-
-*{</table>}*
-*{</div>}*
-*{<div class="col-lg-2"></div>}*
-*{</div>}*
-
 <div class="container">
     <hr/>
     <table class="table table-bordered border_tb">
@@ -75,8 +29,7 @@
             <th>Mã đơn hàng</th>
             <th>Địa chỉ giao hàng</th>
             <th>Trạng thái đơn hàng</th>
-            <th>Thao tác</th>
-
+            <th>Xem đơn hàng</th>
         </tr>
         </thead>
         <tbody>
@@ -95,10 +48,15 @@
         #{/else}
         </tbody>
     </table>
+    <style>
+        .border_tb tr td{
+            color: black;
+        }
+    </style>
 *{Thong tin giao hang}*
     <br>
     <br>
-<hr/>
+    <hr/>
 </div>
 <!--Bill-->
 <!--brand-->

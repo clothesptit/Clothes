@@ -54,15 +54,25 @@
                             <li><a class="color" href="${config.Configuration.BASE_URL}Clothes/Homepage.html">Trang
                                 chủ</a></li>
                         </ul>
+                    #{if session.get("username")==null}
                         <ul class="nav navbar-nav nav_1">
                             <li><a class="color" href="../Customer/Login-form.html">Đăng nhập</a></li>
                         </ul>
                         <ul class="nav navbar-nav nav_1">
                             <li><a class="color" href="../Customer/Register-form.html">Đăng ký</a></li>
                         </ul>
+                    #{/if}
+                    #{else }
+                        <ul class="nav navbar-nav nav_1">
+                            <li><a class="color" href="../Customer/View-info.html">Thông tin</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav nav_1">
+                            <li><a class="color" href="../Bill/View-all-bill.html">Hóa đơn</a></li>
+                        </ul>
                         <ul class="nav navbar-nav nav_1">
                             <li><a class="color" href="../Customer/Logout.html">Đăng xuất</a></li>
                         </ul>
+                    #{/else}
                     </div>
                 </nav>
             </div>

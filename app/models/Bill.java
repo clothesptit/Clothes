@@ -53,4 +53,25 @@ public class Bill extends GenericModel implements Serializable {
         SimpleDateFormat format = new SimpleDateFormat(pattern);
         return format.format(date).toString();
     }
+
+    public float getTotalPriceNoPoint() {
+        float totalPrice = 0;
+        for (int i = 0; i < clothesOrderList.size(); i++) {
+            totalPrice += clothesOrderList.get(i).displayPriceAfterSale();
+        }
+        return totalPrice;
+    }
+
+    public float getTotalPrice() {
+        float totalPrice = 0;
+        for (int i = 0; i < clothesOrderList.size(); i++) {
+            totalPrice += clothesOrderList.get(i).displayPriceAfterSale();
+        }
+        totalPrice = totalPrice - usePoint * 1000;
+        return totalPrice;
+    }
+
+    public int getPointPlus() {
+        return (int) (getTotalPrice() / 10000);
+    }
 }

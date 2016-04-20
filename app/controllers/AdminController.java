@@ -225,13 +225,22 @@ public class AdminController extends Controller {
         for (int i = 0; i < idCheck.length; i++) {
             bill = Bill.findById(idCheck[i]);
             bill.status = params.get("status" + idCheck[i]);
+            Customer customer = Customer.findById(bill.customer.id);
             if (params.get("status" + idCheck[i]).equals("Hủy đơn hàng")) {
-                Customer customer = Customer.findById(bill.customer.id);
                 customer.point += bill.usePoint;
                 customer.save();
+                bill.customer = customer;
                 Mails.sendCancelOrder(bill);
             } else {
-                Mails.sendStatusOrder(bill);
+                if (params.get("status" + idCheck[i]).equals("Đơn hàng đã chuyển thành công")) {
+                    customer.point += bill.getPointPlus();
+                    customer.save();
+                    bill.customer = customer;
+                    Mails.sendCompletedOrder(bill);
+                } else {
+                    bill.customer = customer;
+                    Mails.sendStatusOrder(bill);
+                }
             }
             bill.save();
         }
