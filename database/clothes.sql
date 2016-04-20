@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `clothes` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `clothes`;
 -- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: clothes
+-- Host: localhost    Database: clothes
 -- ------------------------------------------------------
 -- Server version	5.7.11-log
 
@@ -65,7 +65,7 @@ CREATE TABLE `bank` (
 
 LOCK TABLES `bank` WRITE;
 /*!40000 ALTER TABLE `bank` DISABLE KEYS */;
-INSERT INTO `bank` VALUES (1,'12345678','Visa','Agribank'),(2,'123456789','Visa','Agribank'),(3,'123456789','Master','Techcombank');
+INSERT INTO `bank` VALUES (1,'12345678','Visa','Agribank');
 /*!40000 ALTER TABLE `bank` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,6 +82,8 @@ CREATE TABLE `bill` (
   `paymentMethod` tinyint(1) NOT NULL,
   `id_address_shipping` int(11) DEFAULT NULL,
   `id_customer` int(11) DEFAULT NULL,
+  `status` varchar(100) DEFAULT NULL,
+  `usePoint` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_g69iwtjmlbxj5roy0mttmseha` (`id_address_shipping`),
   KEY `FK_q3eyf2mdt9dgql37tup14yg8e` (`id_customer`),
@@ -175,9 +177,12 @@ CREATE TABLE `clothesorder` (
   `quantity` int(11) NOT NULL,
   `id_bill` int(11) DEFAULT NULL,
   `id_clothes` int(11) NOT NULL,
+  `id_deal` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_9afd4809wedu7thbg8cw47oyu` (`id_bill`),
   KEY `FK_jdtembntla6a3dcp9m4hgrc2h` (`id_clothes`),
+  KEY `FK_9311c2a627feor66fke8nutlv` (`id_deal`),
+  CONSTRAINT `FK_9311c2a627feor66fke8nutlv` FOREIGN KEY (`id_deal`) REFERENCES `deal` (`id`),
   CONSTRAINT `FK_9afd4809wedu7thbg8cw47oyu` FOREIGN KEY (`id_bill`) REFERENCES `bill` (`id`),
   CONSTRAINT `FK_jdtembntla6a3dcp9m4hgrc2h` FOREIGN KEY (`id_clothes`) REFERENCES `clothes` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -221,7 +226,6 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (0,'Nam Định','thanhtam.ha1994@hotmail.com','Hà Thanh Tâm','0918181003',0,'1234','test',2),(1,'Nam Định','thanhtam.ha1994@gmail.com','Hà Thanh Tâm','0918181003',0,'1234','test1',3);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,7 +285,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES (1,'Nam Định','12345678','thanhtam.ha1994@hotmail.com','0918181003',2,'1234','hathanhtam',1);
+INSERT INTO `employee` VALUES (1,'Nam Định','12345678','thanhtam.ha1994@hotmail.com','0918181003',2,'admin','admin',1);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -340,7 +344,7 @@ CREATE TABLE `publisher` (
 
 LOCK TABLES `publisher` WRITE;
 /*!40000 ALTER TABLE `publisher` DISABLE KEYS */;
-INSERT INTO `publisher` VALUES (1,'Hà Nội','clothesservice1@hotmail.com','Clothes Service 1','0911111111');
+INSERT INTO `publisher` VALUES (1,'Hà Nội','clothesservice1@hotmail.com','Clothes Service 1','0911111111'),(2,'Hồ Chí Minh','clothesservice2@hotmail.com','Clothes Service 2','0922222222');
 /*!40000 ALTER TABLE `publisher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -371,7 +375,7 @@ CREATE TABLE `publisherservice` (
 
 LOCK TABLES `publisherservice` WRITE;
 /*!40000 ALTER TABLE `publisherservice` DISABLE KEYS */;
-INSERT INTO `publisherservice` VALUES (1,'Danh sách tất cả các mặt hàng','ClothesService1','ClothesService1ImplService','com.clothes1','http://localhost:8001/Clothes1/Clothes-service.html?wsdl',1);
+INSERT INTO `publisherservice` VALUES (1,'Danh sách tất cả các mặt hàng','ClothesService1','ClothesService1ImplService','com.clothes1','http://localhost:8001/Clothes1/Clothes-service.html?wsdl',1),(2,'Danh sách tất cả các mặt hàng','ClothesService2','ClothesService2ImplService','com.clothes2','http://localhost:8002/Clothes2/Clothes-service.html?wsdl',2);
 /*!40000 ALTER TABLE `publisherservice` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -399,6 +403,7 @@ CREATE TABLE `shop` (
 
 LOCK TABLES `shop` WRITE;
 /*!40000 ALTER TABLE `shop` DISABLE KEYS */;
+INSERT INTO `shop` VALUES (1,'Hà Nội','demoptit@gmail.com','Cửa hàng','0912345678','aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -411,5 +416,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-17 15:06:15
+-- Dump completed on 2016-04-20 11:03:27
 GRANT ALL ON clothes.* TO clothes@localhost IDENTIFIED BY '1234';
